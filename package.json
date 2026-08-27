@@ -10,11 +10,12 @@
     "db:seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.9.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "next": "16.3.0",
+    "pg": "^8.23.0",
     "prisma": "^7.9.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -39,7 +40,6 @@
     "@prisma/engines@7.9.1": true,
     "prisma@7.9.1": true,
     "unrs-resolver@1.12.2": true,
-    "esbuild@0.28.2": true,
-    "better-sqlite3@12.11.1": true
+    "esbuild@0.28.2": true
   }
 }

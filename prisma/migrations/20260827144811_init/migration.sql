@@ -1,37 +1,40 @@
 -- CreateTable
 CREATE TABLE "Region" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "nameHy" TEXT NOT NULL,
     "nameRu" TEXT NOT NULL,
     "nameEn" TEXT NOT NULL,
-    "lat" REAL NOT NULL,
-    "lng" REAL NOT NULL
+    "lat" DOUBLE PRECISION NOT NULL,
+    "lng" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "Region_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Village" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "regionId" TEXT NOT NULL,
     "nameHy" TEXT NOT NULL,
     "nameRu" TEXT NOT NULL,
     "nameEn" TEXT NOT NULL,
-    "lat" REAL NOT NULL,
-    "lng" REAL NOT NULL,
+    "lat" DOUBLE PRECISION NOT NULL,
+    "lng" DOUBLE PRECISION NOT NULL,
     "population" INTEGER,
     "descriptionHy" TEXT,
     "descriptionRu" TEXT,
     "descriptionEn" TEXT,
     "coverImage" TEXT,
     "workoutStatus" TEXT NOT NULL DEFAULT 'proposed',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "Village_regionId_fkey" FOREIGN KEY ("regionId") REFERENCES "Region" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Village_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Project" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "villageId" TEXT NOT NULL,
     "type" TEXT NOT NULL DEFAULT 'other',
     "titleHy" TEXT NOT NULL,
@@ -45,13 +48,14 @@ CREATE TABLE "Project" (
     "status" TEXT NOT NULL DEFAULT 'pending',
     "submittedBy" TEXT,
     "contact" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "Project_villageId_fkey" FOREIGN KEY ("villageId") REFERENCES "Village" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Lecturer" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "nameHy" TEXT NOT NULL,
     "nameRu" TEXT NOT NULL,
@@ -63,14 +67,16 @@ CREATE TABLE "Lecturer" (
     "bioRu" TEXT,
     "bioEn" TEXT,
     "photo" TEXT,
-    "order" INTEGER NOT NULL DEFAULT 0
+    "order" INTEGER NOT NULL DEFAULT 0,
+
+    CONSTRAINT "Lecturer_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Lecture" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
-    "lecturerId" TEXT NOT NULL,
+    "lecturerId" TEXT,
     "titleHy" TEXT NOT NULL,
     "titleRu" TEXT NOT NULL,
     "titleEn" TEXT NOT NULL,
@@ -83,8 +89,9 @@ CREATE TABLE "Lecture" (
     "videoUrl" TEXT,
     "coverImage" TEXT,
     "featured" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "Lecture_lecturerId_fkey" FOREIGN KEY ("lecturerId") REFERENCES "Lecturer" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Lecture_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -113,3 +120,12 @@ CREATE INDEX "Lecture_lecturerId_idx" ON "Lecture"("lecturerId");
 
 -- CreateIndex
 CREATE INDEX "Lecture_category_idx" ON "Lecture"("category");
+
+-- AddForeignKey
+ALTER TABLE "Village" ADD CONSTRAINT "Village_regionId_fkey" FOREIGN KEY ("regionId") REFERENCES "Region"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Project" ADD CONSTRAINT "Project_villageId_fkey" FOREIGN KEY ("villageId") REFERENCES "Village"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Lecture" ADD CONSTRAINT "Lecture_lecturerId_fkey" FOREIGN KEY ("lecturerId") REFERENCES "Lecturer"("id") ON DELETE SET NULL ON UPDATE CASCADE;

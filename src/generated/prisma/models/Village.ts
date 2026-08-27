@@ -720,6 +720,7 @@ export type VillageCreateOrConnectWithoutRegionInput = {
 
 export type VillageCreateManyRegionInputEnvelope = {
   data: Prisma.VillageCreateManyRegionInput | Prisma.VillageCreateManyRegionInput[]
+  skipDuplicates?: boolean
 }
 
 export type VillageUpsertWithWhereUniqueWithoutRegionInput = {
@@ -1734,6 +1735,7 @@ export type VillageCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Villages.
    */
   data: Prisma.VillageCreateManyInput | Prisma.VillageCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1752,6 +1754,7 @@ export type VillageCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Villages.
    */
   data: Prisma.VillageCreateManyInput | Prisma.VillageCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

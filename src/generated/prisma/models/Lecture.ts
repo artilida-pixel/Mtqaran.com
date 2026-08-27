@@ -692,6 +692,7 @@ export type LectureCreateOrConnectWithoutLecturerInput = {
 
 export type LectureCreateManyLecturerInputEnvelope = {
   data: Prisma.LectureCreateManyLecturerInput | Prisma.LectureCreateManyLecturerInput[]
+  skipDuplicates?: boolean
 }
 
 export type LectureUpsertWithWhereUniqueWithoutLecturerInput = {
@@ -1592,6 +1593,7 @@ export type LectureCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Lectures.
    */
   data: Prisma.LectureCreateManyInput | Prisma.LectureCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1610,6 +1612,7 @@ export type LectureCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Lectures.
    */
   data: Prisma.LectureCreateManyInput | Prisma.LectureCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

@@ -1428,6 +1428,7 @@ export type LecturerCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * The data used to create many Lecturers.
    */
   data: Prisma.LecturerCreateManyInput | Prisma.LecturerCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1446,6 +1447,7 @@ export type LecturerCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extens
    * The data used to create many Lecturers.
    */
   data: Prisma.LecturerCreateManyInput | Prisma.LecturerCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
