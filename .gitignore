@@ -1,0 +1,31 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# env
+.env
+.env*.local
+
+# typescript
+next-env.d.ts
+*.tsbuildinfo
+
+# db
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# raw source dump used by scripts/extract-villages.mjs, not needed at runtime
+/tmp_data
+
+# local dev server log
+/dev.log

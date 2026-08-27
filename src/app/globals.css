@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  /* Light theme (default) */
+  --background: #faf7f2;
+  --foreground: #1c1712;
+  --surface: #ffffff;
+  --border: #e7ddcd;
+  --muted: #7a6f60;
+
+  /* MTQARAN brand: black + orange duotone. These stay constant across themes. */
+  --brand-apricot: #ef7d1f;
+  --brand-apricot-dark: #c85f10;
+  --brand-orange-soft: #fdead9;
+  --brand-blue: #17130f;
+  --brand-red: #c23b32;
+  --brand-green: #3f7a5c;
+
+  /* Fixed-dark "chrome" tokens: header/footer/hero bands stay this color in
+     both themes, so they read as a constant brand accent. */
+  --ink: #17130f;
+  --ink-2: #2a2018;
+  --on-ink: #f7efe4;
+  --on-ink-muted: #cbbca8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #14100c;
+    --foreground: #f5ede1;
+    --surface: #201a13;
+    --border: #3a2d1f;
+    --muted: #b9ab98;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #14100c;
+  --foreground: #f5ede1;
+  --surface: #201a13;
+  --border: #3a2d1f;
+  --muted: #b9ab98;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-brand-apricot: var(--brand-apricot);
+  --color-brand-apricot-dark: var(--brand-apricot-dark);
+  --color-brand-orange-soft: var(--brand-orange-soft);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-red: var(--brand-red);
+  --color-brand-green: var(--brand-green);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
+  --color-muted: var(--muted);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-noto-sans), var(--font-noto-sans-armenian), Arial, Helvetica, sans-serif;
+}
+
+.hero-ink {
+  background:
+    radial-gradient(1100px 480px at 85% -10%, rgba(239, 125, 31, 0.35), transparent 60%),
+    linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+  color: var(--on-ink);
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: var(--ink) !important;
+}
+
+.armenia-region {
+  transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
+  cursor: pointer;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--brand-apricot), var(--brand-apricot-dark));
+}

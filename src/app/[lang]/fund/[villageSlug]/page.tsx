@@ -1,0 +1,77 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getDictionary } from "@/lib/dictionaries";
+import { isLocale, type Locale } from "@/lib/i18n";
+import { prisma } from "@/lib/prisma";
+import { pickLocalized } from "@/lib/localized";
+import ProjectCard from "@/components/fund/ProjectCard";
+
+export default async function VillagePage({
+  params,
+}: {
+  params: Promise<{ lang: string; villageSlug: string }>;
+}) {
+  const { lang, villageSlug } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale: Locale = lang;
+  const dict = await getDictionary(locale);
+
+  const village = await prisma.village.findUnique({
+    where: { slug: villageSlug },
+    include: {
+      region: true,
+      projects: { where: { status: { in: ["active", "completed"] } }, orderBy: { createdAt: "asc" } },
+    },
+  });
+  if (!village) notFound();
+
+  const workoutProject = village.projects.find((p) => p.type === "workout_ground");
+  const otherProjects = village.projects.filter((p) => p.type !== "workout_ground");
+  const description = pickLocalized(village, "description", locale);
+  const statusLabel =
+    dict.village.workout_status[village.workoutStatus as keyof typeof dict.village.workout_status];
+
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-12">
+      <Link href={`/${locale}/fund`} className="text-sm font-medium text-foreground">
+        ← {dict.village.back_to_map}
+      </Link>
+
+      <div className="mt-4">
+        <p className="text-sm font-semibold text-brand-apricot-dark">
+          {dict.village.region}: {pickLocalized(village.region, "name", locale)}
+        </p>
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight">
+          {pickLocalized(village, "name", locale)}
+        </h1>
+      </div>
+
+      {description && <p className="mt-4 max-w-2xl text-muted">{description}</p>}
+
+      <section className="mt-8">
+        <h2 className="text-xl font-bold">{dict.village.workout_project_title}</h2>
+        <p className="mt-1 text-sm text-muted">{statusLabel}</p>
+        {workoutProject ? (
+          <div className="mt-4">
+            <ProjectCard project={workoutProject} lang={locale} dict={dict} />
+          </div>
+        ) : (
+          <p className="mt-4 text-muted">{dict.fund.select_region}</p>
+        )}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-bold">{dict.village.other_projects_title}</h2>
+        {otherProjects.length === 0 ? (
+          <p className="mt-4 text-muted">{dict.village.no_other_projects}</p>
+        ) : (
+          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            {otherProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} lang={locale} dict={dict} />
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}

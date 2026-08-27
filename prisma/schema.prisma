@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ---------- Village Development Fund ----------
+
+model Region {
+  id      String  @id @default(cuid())
+  slug    String  @unique
+  nameHy  String
+  nameRu  String
+  nameEn  String
+  lat     Float
+  lng     Float
+  villages Village[]
+}
+
+model Village {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  regionId      String
+  region        Region   @relation(fields: [regionId], references: [id])
+  nameHy        String
+  nameRu        String
+  nameEn        String
+  lat           Float
+  lng           Float
+  population    Int?
+  descriptionHy String?
+  descriptionRu String?
+  descriptionEn String?
+  coverImage    String?
+  workoutStatus String   @default("proposed") // proposed | funding | building | completed
+  createdAt     DateTime @default(now())
+  projects      Project[]
+
+  @@index([regionId])
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  villageId     String
+  village       Village  @relation(fields: [villageId], references: [id], onDelete: Cascade)
+  type          String   @default("other") // workout_ground | other
+  titleHy       String
+  titleRu       String
+  titleEn       String
+  descriptionHy String?
+  descriptionRu String?
+  descriptionEn String?
+  goalAmount    Int      // AMD
+  raisedAmount  Int      @default(0) // AMD
+  status        String   @default("pending") // pending | active | completed | rejected
+  submittedBy   String?
+  contact       String?
+  createdAt     DateTime @default(now())
+
+  @@index([villageId])
+  @@index([status])
+}
+
+// ---------- MTQARAN Academy ----------
+
+model Lecturer {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  nameHy    String
+  nameRu    String
+  nameEn    String
+  titleHy   String?
+  titleRu   String?
+  titleEn   String?
+  bioHy     String?
+  bioRu     String?
+  bioEn     String?
+  photo     String?
+  order     Int      @default(0)
+  lectures  Lecture[]
+}
+
+model Lecture {
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  lecturerId    String?
+  lecturer      Lecturer? @relation(fields: [lecturerId], references: [id])
+  titleHy       String
+  titleRu       String
+  titleEn       String
+  descriptionHy String?
+  descriptionRu String?
+  descriptionEn String?
+  category      String? // e.g. entrepreneurship, crafts, agriculture, leadership
+  level         String? // beginner | intermediate | advanced
+  durationMin   Int?
+  videoUrl      String?
+  coverImage    String?
+  featured      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([lecturerId])
+  @@index([category])
+}

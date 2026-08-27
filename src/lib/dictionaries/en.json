@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "MTQARAN — Academy & Armenian Villages Development Fund",
+    "description": "MTQARAN brings together two directions: MTQARAN Academy and the Armenian Villages Development Fund \"We Are Our Villages\"."
+  },
+  "nav": {
+    "home": "Home",
+    "academy": "Academy",
+    "fund": "Villages Fund",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero_kicker": "MTQARAN",
+    "hero_title": "Knowledge and roots. One goal — a stronger Armenia.",
+    "hero_subtitle": "MTQARAN unites two directions: educating a new generation and reviving Armenian villages.",
+    "academy_card_title": "MTQARAN Academy",
+    "academy_card_text": "Lectures, mentors and practical courses for those who want to grow and share knowledge.",
+    "academy_card_cta": "See lectures",
+    "fund_card_title": "Villages Development Fund",
+    "fund_card_subtitle": "We Are Our Villages",
+    "fund_card_text": "We build workout grounds and support initiatives in Armenian villages — region by region.",
+    "fund_card_cta": "Open villages map",
+    "stats_villages": "villages on the map",
+    "stats_regions": "regions of Armenia",
+    "stats_lectures": "lectures in the Academy",
+    "stats_goal": "AMD goal per ground"
+  },
+  "academy": {
+    "hero_title": "MTQARAN Academy",
+    "hero_subtitle": "Lectures and mentors sharing hands-on experience — from entrepreneurship to crafts.",
+    "lecturers_title": "Our lecturers",
+    "lectures_title": "Lectures & courses",
+    "filter_all": "All",
+    "watch": "Watch",
+    "channel_name": "MTQARAN Academy",
+    "back_to_lectures": "Back to lectures",
+    "source_label": "Source",
+    "coming_soon": "Content is coming soon — this section is being filled in",
+    "learning_paths_title": "Learning tracks",
+    "learning_paths_text": "Courses are grouped into themed tracks, so you can go from fundamentals to practice.",
+    "community_title": "Graduates in the villages",
+    "community_text": "An idea for the future: the best graduate projects from the Academy could be deployed directly in villages from the Development Fund — turning knowledge into real change."
+  },
+  "fund": {
+    "hero_kicker": "We Are Our Villages",
+    "hero_title": "Armenian Villages Development Fund",
+    "hero_subtitle": "We build workout grounds and raise funds for initiatives in every Armenian village — pick a region and a village on the map.",
+    "regions_title": "Regions of Armenia",
+    "map_title": "Villages map",
+    "villages_count": "villages",
+    "select_region": "Select a region to see its villages",
+    "active_projects_title": "Active campaigns",
+    "goal": "Goal",
+    "raised": "Raised",
+    "support": "Support",
+    "view_village": "Open village",
+    "propose_project_title": "Propose a project",
+    "propose_project_text": "Have an idea for your village — a playground, school repair, street lighting? Tell us about it.",
+    "search_placeholder": "Search a village…",
+    "search_no_results": "No matches found",
+    "search_more": "and {count} more…"
+  },
+  "village": {
+    "back_to_map": "Back to map",
+    "population": "Population",
+    "region": "Region",
+    "workout_status": {
+      "proposed": "Ground proposed",
+      "funding": "Fundraising in progress",
+      "building": "Under construction",
+      "completed": "Built"
+    },
+    "workout_project_title": "Workout ground",
+    "other_projects_title": "Other village projects",
+    "no_other_projects": "No other projects yet — be the first to propose an idea.",
+    "propose_button": "Propose your project",
+    "form": {
+      "title": "Project title",
+      "description": "Description",
+      "goal": "Goal amount (AMD)",
+      "contact": "Your contact (email or phone)",
+      "submit": "Submit for review",
+      "success": "Thank you! The project was submitted and will appear after admin review.",
+      "error": "Could not submit. Please check the fields and try again."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "made_for": "This site unites MTQARAN Academy and the Armenian Villages Development Fund."
+  },
+  "common": {
+    "amd": "AMD",
+    "min": "min",
+    "loading": "Loading…"
+  }
+}
