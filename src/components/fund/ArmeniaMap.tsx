@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import L from "leaflet";
-import { GeoJSON, MapContainer, Marker, Popup, Tooltip, useMap } from "react-leaflet";
+import { GeoJSON, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -25,17 +25,40 @@ function slugifyShapeName(name: string): string {
   return name.toLowerCase().replace(/\s+/g, "-");
 }
 
-function villageIcon(color: string) {
+// Village dots shrink as you zoom in, so a busy area doesn't turn into a
+// wall of overlapping circles once you're close enough to tell them apart.
+const MIN_ZOOM_FOR_SIZE = 7;
+const MAX_ZOOM_FOR_SIZE = 13;
+const MAX_DOT_SIZE = 11;
+const MIN_DOT_SIZE = 5;
+
+function markerSizeForZoom(zoom: number): number {
+  const t = Math.min(1, Math.max(0, (zoom - MIN_ZOOM_FOR_SIZE) / (MAX_ZOOM_FOR_SIZE - MIN_ZOOM_FOR_SIZE)));
+  return Math.round(MAX_DOT_SIZE - t * (MAX_DOT_SIZE - MIN_DOT_SIZE));
+}
+
+function villageIcon(color: string, size: number) {
+  const half = size / 2;
   return L.divIcon({
     className: "",
     html: `<div style="
-      width:14px;height:14px;border-radius:50%;
-      background:${color};border:2px solid var(--ink);
-      box-shadow:0 0 0 2px rgba(239,125,31,0.35);
+      width:${size}px;height:${size}px;border-radius:50%;
+      background:${color};border:1px solid var(--ink);
+      box-shadow:0 0 0 1px rgba(239,125,31,0.35);
     "></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
+    iconSize: [size, size],
+    iconAnchor: [half, half],
   });
+}
+
+function ZoomTracker({ onZoom }: { onZoom: (zoom: number) => void }) {
+  const map = useMap();
+  useEffect(() => {
+    onZoom(map.getZoom());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only run once, on mount, to read the initial zoom
+  }, []);
+  useMapEvent("zoomend", () => onZoom(map.getZoom()));
+  return null;
 }
 
 function clusterIcon(cluster: L.MarkerCluster) {
@@ -91,6 +114,8 @@ export default function ArmeniaMap({
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
   const [hoveredName, setHoveredName] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(MIN_ZOOM_FOR_SIZE);
+  const dotSize = markerSizeForZoom(zoom);
 
   useEffect(() => {
     if (!selectedVillageId) return;
@@ -136,6 +161,7 @@ export default function ArmeniaMap({
         attributionControl={false}
       >
       <FlyTo focus={focus} />
+      <ZoomTracker onZoom={setZoom} />
       <GeoJSON
         data={regionsGeo}
         style={styleFor}
@@ -172,7 +198,7 @@ export default function ArmeniaMap({
           <Marker
             key={v.id}
             position={[v.lat, v.lng]}
-            icon={villageIcon(STATUS_COLORS[v.workoutStatus] ?? STATUS_COLORS.proposed)}
+            icon={villageIcon(STATUS_COLORS[v.workoutStatus] ?? STATUS_COLORS.proposed, dotSize)}
             ref={(instance) => {
               if (instance) markerRefs.current.set(v.id, instance);
               else markerRefs.current.delete(v.id);
