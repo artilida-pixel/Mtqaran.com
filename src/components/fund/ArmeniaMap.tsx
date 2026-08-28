@@ -6,7 +6,7 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import L from "leaflet";
 import { GeoJSON, MapContainer, Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { Feature, FeatureCollection } from "geojson";
 import type { Locale } from "@/lib/i18n";
@@ -69,6 +69,7 @@ function FlyTo({ focus }: { focus: { lat: number; lng: number; zoom: number } | 
 export default function ArmeniaMap({
   villages,
   regionsGeo,
+  regionNameBySlug,
   activeRegionSlug,
   onRegionClick,
   focus,
@@ -78,6 +79,7 @@ export default function ArmeniaMap({
 }: {
   villages: VillageMapItem[];
   regionsGeo: FeatureCollection;
+  regionNameBySlug: Map<string, string>;
   activeRegionSlug: string | null;
   onRegionClick: (slug: string) => void;
   focus: { lat: number; lng: number; zoom: number } | null;
@@ -88,6 +90,7 @@ export default function ArmeniaMap({
   const knownSlugs = useMemo(() => new Set(villages.map((v) => v.regionSlug)), [villages]);
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
+  const [hoveredName, setHoveredName] = useState<string | null>(null);
 
   useEffect(() => {
     if (!selectedVillageId) return;
@@ -116,15 +119,22 @@ export default function ArmeniaMap({
   }
 
   return (
-    <MapContainer
-      bounds={ARMENIA_BOUNDS}
-      maxBounds={ARMENIA_BOUNDS}
-      maxBoundsViscosity={0.9}
-      minZoom={7}
-      maxZoom={14}
-      className="h-full w-full"
-      zoomControl
-    >
+    <div className="relative h-full w-full">
+      {hoveredName && (
+        <div className="pointer-events-none absolute bottom-3 left-3 z-[1000] rounded-lg bg-ink/85 px-3 py-1.5 text-sm font-semibold text-on-ink shadow-lg">
+          {hoveredName}
+        </div>
+      )}
+      <MapContainer
+        bounds={ARMENIA_BOUNDS}
+        maxBounds={ARMENIA_BOUNDS}
+        maxBoundsViscosity={0.9}
+        minZoom={7}
+        maxZoom={14}
+        className="h-full w-full"
+        zoomControl
+        attributionControl={false}
+      >
       <FlyTo focus={focus} />
       <GeoJSON
         data={regionsGeo}
@@ -135,10 +145,18 @@ export default function ArmeniaMap({
           if (knownSlugs.has(slug)) {
             layer.bindTooltip(name, { sticky: true, className: "text-xs" });
             layer.on("click", () => onRegionClick(slug));
-            layer.on("mouseover", () => (layer as L.Path).setStyle({ fillOpacity: 0.55 }));
-            layer.on("mouseout", () =>
-              (layer as L.Path).setStyle(styleFor(feature) as L.PathOptions)
-            );
+            layer.on("mouseover", () => {
+              (layer as L.Path).setStyle({
+                fillOpacity: 0.75,
+                fillColor: "var(--brand-apricot)",
+                weight: 2.5,
+              });
+              setHoveredName(regionNameBySlug.get(slug) ?? name);
+            });
+            layer.on("mouseout", () => {
+              (layer as L.Path).setStyle(styleFor(feature) as L.PathOptions);
+              setHoveredName(null);
+            });
           }
         }}
       />
@@ -180,6 +198,7 @@ export default function ArmeniaMap({
           </Marker>
         ))}
       </MarkerClusterGroup>
-    </MapContainer>
+      </MapContainer>
+    </div>
   );
 }

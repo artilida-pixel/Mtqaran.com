@@ -57,6 +57,7 @@ export default function FundExplorer({
         <ArmeniaMap
           villages={villages}
           regionsGeo={regionsGeo}
+          regionNameBySlug={regionNameBySlug}
           activeRegionSlug={expandedSlug}
           onRegionClick={toggleRegion}
           focus={focus}
