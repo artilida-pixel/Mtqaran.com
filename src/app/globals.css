@@ -85,6 +85,21 @@ body {
   outline: none;
 }
 
+/* The map renders OpenStreetMap-derived roads/rivers/water, and ODbL
+   requires crediting OSM for that — so the attribution stays, just as
+   unobtrusive as the license allows. */
+.leaflet-control-attribution {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 2px 6px !important;
+  font-size: 9px !important;
+  opacity: 0.45;
+  color: var(--on-ink-muted) !important;
+}
+.leaflet-control-attribution a {
+  color: inherit !important;
+}
+
 .armenia-region {
   transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
   cursor: pointer;

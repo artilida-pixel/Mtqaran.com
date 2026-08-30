@@ -68,6 +68,21 @@ function villageIcon(color: string, size: number, label: string | null) {
   });
 }
 
+// Reads the region slug back off a hovered layer. For an individual
+// village marker that's a custom option we stash on it; for a cluster
+// bubble (which represents several markers, possibly from more than one
+// region) we just use its first child as a reasonable guess.
+type WithRegionSlug = { options?: { regionSlug?: string } };
+
+function regionSlugForLayer(layer: L.Layer): string | null {
+  const withChildren = layer as L.Layer & { getAllChildMarkers?: () => L.Marker[] };
+  if (typeof withChildren.getAllChildMarkers === "function") {
+    const child = withChildren.getAllChildMarkers()[0] as WithRegionSlug | undefined;
+    return child?.options?.regionSlug ?? null;
+  }
+  return (layer as unknown as WithRegionSlug).options?.regionSlug ?? null;
+}
+
 function ZoomTracker({ onZoom }: { onZoom: (zoom: number) => void }) {
   const map = useMap();
   useEffect(() => {
@@ -252,6 +267,11 @@ export default function ArmeniaMap({
         spiderfyOnMaxZoom
         maxClusterRadius={50}
         showCoverageOnHover={false}
+        onMouseOver={(e) => {
+          const slug = regionSlugForLayer(e.layer);
+          if (slug) setHoveredSlug(slug);
+        }}
+        onMouseOut={() => setHoveredSlug(null)}
       >
         {villages.map((v) => (
           <Marker
@@ -263,8 +283,12 @@ export default function ArmeniaMap({
               zoom >= LABEL_MIN_ZOOM ? pickLocalized(v, "name", lang) : null
             )}
             ref={(instance) => {
-              if (instance) markerRefs.current.set(v.id, instance);
-              else markerRefs.current.delete(v.id);
+              if (instance) {
+                markerRefs.current.set(v.id, instance);
+                (instance.options as { regionSlug?: string }).regionSlug = v.regionSlug;
+              } else {
+                markerRefs.current.delete(v.id);
+              }
             }}
             eventHandlers={{
               mouseover: () => setHoveredSlug(v.regionSlug),
