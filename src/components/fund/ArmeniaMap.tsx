@@ -203,7 +203,9 @@ export default function ArmeniaMap({
   const styleFor = useCallback(
     (feature?: Feature) => {
       const slug = featureSlug(feature);
-      const interactive = knownSlugs.has(slug);
+      // Yerevan has no rural villages in the fund, so it's not clickable —
+      // but it should still read as part of the country, not a blank hole.
+      const interactive = knownSlugs.has(slug) || slug === "yerevan";
       const isActive = slug === activeRegionSlug;
       const isHovered = slug === hoveredSlug;
       return {
