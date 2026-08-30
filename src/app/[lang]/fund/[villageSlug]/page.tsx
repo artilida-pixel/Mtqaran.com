@@ -5,6 +5,7 @@ import { isLocale, type Locale } from "@/lib/i18n";
 import { prisma } from "@/lib/prisma";
 import { pickLocalized } from "@/lib/localized";
 import ProjectCard from "@/components/fund/ProjectCard";
+import VillageSignBanner from "@/components/fund/VillageSignBanner";
 
 export default async function VillagePage({
   params,
@@ -38,6 +39,10 @@ export default async function VillagePage({
       </Link>
 
       <div className="mt-4">
+        <VillageSignBanner nameHy={village.nameHy} nameEn={village.nameEn} />
+      </div>
+
+      <div className="mt-6">
         <p className="text-sm font-semibold text-brand-apricot-dark">
           {dict.village.region}: {pickLocalized(village.region, "name", locale)}
         </p>
