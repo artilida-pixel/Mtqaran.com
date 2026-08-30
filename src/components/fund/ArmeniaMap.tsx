@@ -266,6 +266,10 @@ export default function ArmeniaMap({
               if (instance) markerRefs.current.set(v.id, instance);
               else markerRefs.current.delete(v.id);
             }}
+            eventHandlers={{
+              mouseover: () => setHoveredSlug(v.regionSlug),
+              mouseout: () => setHoveredSlug(null),
+            }}
           >
             {zoom < LABEL_MIN_ZOOM && (
               <Tooltip direction="top" offset={[0, -8]} opacity={1} className="text-xs font-medium">
