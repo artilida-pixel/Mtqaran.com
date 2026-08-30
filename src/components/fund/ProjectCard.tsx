@@ -20,9 +20,12 @@ export default function ProjectCard({
   const percent = progressPercent(project.raisedAmount, project.goalAmount);
 
   return (
-    <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-      {villageName && <p className="text-xs font-semibold text-brand-apricot-dark">{villageName}</p>}
-      <h3 className="mt-1 font-semibold leading-snug">{title}</h3>
+    <div className="relative rounded-2xl border border-border bg-surface p-5 shadow-sm">
+      <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-apricot text-xs font-extrabold text-ink shadow-md">
+        {percent}%
+      </span>
+      {villageName && <p className="pr-14 text-xs font-semibold text-brand-apricot-dark">{villageName}</p>}
+      <h3 className="mt-1 pr-14 font-semibold leading-snug">{title}</h3>
       {description && <p className="mt-2 text-sm text-muted">{description}</p>}
 
       <div className="mt-4">
@@ -34,7 +37,6 @@ export default function ProjectCard({
             <span className="font-semibold">{formatAmd(project.raisedAmount, lang)}</span>{" "}
             <span className="text-muted">/ {formatAmd(project.goalAmount, lang)} {dict.common.amd}</span>
           </span>
-          <span className="font-semibold text-foreground">{percent}%</span>
         </div>
       </div>
     </div>
