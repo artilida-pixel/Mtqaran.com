@@ -6,7 +6,12 @@ import FundExplorer from "@/components/fund/FundExplorer";
 import ProjectCard from "@/components/fund/ProjectCard";
 import { pickLocalized } from "@/lib/localized";
 import type { RegionListItem } from "@/components/fund/types";
-import { getArmeniaRegionsGeoJson } from "@/lib/armeniaGeo";
+import {
+  getArmeniaRegionsGeoJson,
+  getArmeniaRoadsGeoJson,
+  getArmeniaRiversGeoJson,
+  getArmeniaWaterGeoJson,
+} from "@/lib/armeniaGeo";
 
 export default async function FundPage({
   params,
@@ -52,6 +57,9 @@ export default async function FundPage({
   });
 
   const regionsGeo = getArmeniaRegionsGeoJson();
+  const roadsGeo = getArmeniaRoadsGeoJson();
+  const riversGeo = getArmeniaRiversGeoJson();
+  const waterGeo = getArmeniaWaterGeoJson();
 
   return (
     <div>
@@ -64,7 +72,15 @@ export default async function FundPage({
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <FundExplorer regions={regions} regionsGeo={regionsGeo} lang={locale} dict={dict} />
+        <FundExplorer
+          regions={regions}
+          regionsGeo={regionsGeo}
+          roadsGeo={roadsGeo}
+          riversGeo={riversGeo}
+          waterGeo={waterGeo}
+          lang={locale}
+          dict={dict}
+        />
       </section>
 
       {activeProjects.length > 0 && (

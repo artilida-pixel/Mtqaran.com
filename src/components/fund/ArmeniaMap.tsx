@@ -106,9 +106,41 @@ function FlyTo({ focus }: { focus: { lat: number; lng: number; zoom: number } | 
   return null;
 }
 
+// Keeps the required OSM attribution text but drops Leaflet's own "🇺🇦
+// Leaflet" branding prefix from the control.
+function AttributionPrefixFix() {
+  const map = useMap();
+  useEffect(() => {
+    map.attributionControl?.setPrefix(false);
+  }, [map]);
+  return null;
+}
+
+// Roads/rivers/water don't need to catch mouse events (that would steal
+// hover/click from the region polygon underneath), and using a shared
+// Canvas renderer instead of SVG keeps ~14,000 line/polygon features from
+// turning into that many individual DOM nodes.
+const ROAD_STYLE: Record<string, L.PathOptions> = {
+  trunk: { color: "rgba(247,239,228,0.55)", weight: 2 },
+  primary: { color: "rgba(247,239,228,0.45)", weight: 1.5 },
+  secondary: { color: "rgba(247,239,228,0.32)", weight: 1 },
+};
+const ROAD_STYLE_DEFAULT: L.PathOptions = { color: "rgba(247,239,228,0.25)", weight: 1 };
+
+const RIVER_STYLE: L.PathOptions = { color: "#4a90d9", weight: 1.2, opacity: 0.6 };
+const WATER_STYLE: L.PathOptions = {
+  color: "#4a90d9",
+  weight: 1,
+  fillColor: "#2f6fac",
+  fillOpacity: 0.55,
+};
+
 export default function ArmeniaMap({
   villages,
   regionsGeo,
+  roadsGeo,
+  riversGeo,
+  waterGeo,
   regionNameBySlug,
   activeRegionSlug,
   onRegionClick,
@@ -119,6 +151,9 @@ export default function ArmeniaMap({
 }: {
   villages: VillageMapItem[];
   regionsGeo: FeatureCollection;
+  roadsGeo: FeatureCollection;
+  riversGeo: FeatureCollection;
+  waterGeo: FeatureCollection;
   regionNameBySlug: Map<string, string>;
   activeRegionSlug: string | null;
   onRegionClick: (slug: string) => void;
@@ -128,6 +163,7 @@ export default function ArmeniaMap({
   dict: Dictionary;
 }) {
   const knownSlugs = useMemo(() => new Set(villages.map((v) => v.regionSlug)), [villages]);
+  const renderer = useMemo(() => L.canvas({ padding: 0.5 }), []);
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
@@ -165,6 +201,16 @@ export default function ArmeniaMap({
     [knownSlugs, activeRegionSlug, hoveredSlug]
   );
 
+  const roadStyle = useCallback(
+    (feature?: Feature): L.PathOptions => {
+      const highway = (feature?.properties as { highway?: string } | undefined)?.highway ?? "";
+      return { ...(ROAD_STYLE[highway] ?? ROAD_STYLE_DEFAULT), renderer, interactive: false };
+    },
+    [renderer]
+  );
+  const riverStyle = useCallback((): L.PathOptions => ({ ...RIVER_STYLE, renderer, interactive: false }), [renderer]);
+  const waterStyle = useCallback((): L.PathOptions => ({ ...WATER_STYLE, renderer, interactive: false }), [renderer]);
+
   return (
     <div className="relative h-full w-full">
       {hoveredName && (
@@ -180,16 +226,15 @@ export default function ArmeniaMap({
         maxZoom={14}
         className="h-full w-full"
         zoomControl
-        attributionControl={false}
       >
       <FlyTo focus={focus} />
       <ZoomTracker onZoom={setZoom} />
+      <AttributionPrefixFix />
       <GeoJSON
         data={regionsGeo}
         style={styleFor}
         onEachFeature={(feature, layer) => {
           const slug = featureSlug(feature);
-          const name = (feature.properties as { shapeName?: string } | undefined)?.shapeName ?? "";
           if (knownSlugs.has(slug)) {
             layer.on("click", () => onRegionClick(slug));
             layer.on("mouseover", () => setHoveredSlug(slug));
@@ -197,6 +242,9 @@ export default function ArmeniaMap({
           }
         }}
       />
+      <GeoJSON data={waterGeo} style={waterStyle} attribution="&copy; OpenStreetMap contributors" />
+      <GeoJSON data={roadsGeo} style={roadStyle} />
+      <GeoJSON data={riversGeo} style={riverStyle} />
       <MarkerClusterGroup
         ref={clusterRef}
         chunkedLoading

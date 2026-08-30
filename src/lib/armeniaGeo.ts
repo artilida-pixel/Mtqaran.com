@@ -3,12 +3,35 @@ import fs from "fs";
 import path from "path";
 import type { FeatureCollection } from "geojson";
 
-let cached: FeatureCollection | null = null;
+const cache = new Map<string, FeatureCollection>();
+
+function loadGeoJson(fileName: string): FeatureCollection {
+  const cached = cache.get(fileName);
+  if (cached) return cached;
+  const filePath = path.join(process.cwd(), "src/data", fileName);
+  const raw = fs.readFileSync(filePath, "utf8");
+  const parsed = JSON.parse(raw) as FeatureCollection;
+  cache.set(fileName, parsed);
+  return parsed;
+}
 
 export function getArmeniaRegionsGeoJson(): FeatureCollection {
-  if (cached) return cached;
-  const filePath = path.join(process.cwd(), "src/data/armenia-regions.geojson");
-  const raw = fs.readFileSync(filePath, "utf8");
-  cached = JSON.parse(raw) as FeatureCollection;
-  return cached;
+  return loadGeoJson("armenia-regions.geojson");
+}
+
+// Roads (trunk/primary/secondary), rivers and standing water, sourced from
+// OpenStreetMap via the Overpass API and clipped to Armenia's own admin
+// boundary (not a bounding box, so no neighboring-country data leaks in).
+// Geometry is simplified (~150m tolerance) to keep the map smooth with a
+// few thousand features on top of everything else it already renders.
+export function getArmeniaRoadsGeoJson(): FeatureCollection {
+  return loadGeoJson("armenia-roads.geojson");
+}
+
+export function getArmeniaRiversGeoJson(): FeatureCollection {
+  return loadGeoJson("armenia-rivers.geojson");
+}
+
+export function getArmeniaWaterGeoJson(): FeatureCollection {
+  return loadGeoJson("armenia-water.geojson");
 }
