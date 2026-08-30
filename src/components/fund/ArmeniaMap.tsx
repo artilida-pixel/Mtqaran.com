@@ -32,20 +32,37 @@ const MAX_ZOOM_FOR_SIZE = 13;
 const MAX_DOT_SIZE = 11;
 const MIN_DOT_SIZE = 5;
 
+// Below this zoom, most villages are still clustered and 1200+ permanent
+// name labels would just be noise. Past it, clusters have mostly broken
+// apart into individual dots, so a name next to each one stays readable.
+const LABEL_MIN_ZOOM = 12;
+
 function markerSizeForZoom(zoom: number): number {
   const t = Math.min(1, Math.max(0, (zoom - MIN_ZOOM_FOR_SIZE) / (MAX_ZOOM_FOR_SIZE - MIN_ZOOM_FOR_SIZE)));
   return Math.round(MAX_DOT_SIZE - t * (MAX_DOT_SIZE - MIN_DOT_SIZE));
 }
 
-function villageIcon(color: string, size: number) {
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// The label is baked directly into the marker's HTML rather than using
+// react-leaflet's <Tooltip permanent>, because a permanent tooltip bound to
+// a marker living inside MarkerClusterGroup doesn't reliably auto-open when
+// the cluster plugin (not React) decides to reveal that marker individually.
+function villageIcon(color: string, size: number, label: string | null) {
   const half = size / 2;
+  const dot = `<div style="position:absolute;left:0;top:0;width:${size}px;height:${size}px;border-radius:50%;background:${color};border:1px solid var(--ink);box-shadow:0 0 0 1px rgba(239,125,31,0.35);"></div>`;
+  const labelHtml = label
+    ? `<div style="position:absolute;left:${size + 4}px;top:50%;transform:translateY(-50%);white-space:nowrap;background:rgba(23,19,15,0.85);color:#f7efe4;font-size:11px;line-height:1.5;padding:1px 5px;border-radius:4px;">${escapeHtml(label)}</div>`
+    : "";
   return L.divIcon({
     className: "",
-    html: `<div style="
-      width:${size}px;height:${size}px;border-radius:50%;
-      background:${color};border:1px solid var(--ink);
-      box-shadow:0 0 0 1px rgba(239,125,31,0.35);
-    "></div>`,
+    html: `<div style="position:relative;width:${size}px;height:${size}px;">${dot}${labelHtml}</div>`,
     iconSize: [size, size],
     iconAnchor: [half, half],
   });
@@ -192,15 +209,21 @@ export default function ArmeniaMap({
           <Marker
             key={v.id}
             position={[v.lat, v.lng]}
-            icon={villageIcon(STATUS_COLORS[v.workoutStatus] ?? STATUS_COLORS.proposed, dotSize)}
+            icon={villageIcon(
+              STATUS_COLORS[v.workoutStatus] ?? STATUS_COLORS.proposed,
+              dotSize,
+              zoom >= LABEL_MIN_ZOOM ? pickLocalized(v, "name", lang) : null
+            )}
             ref={(instance) => {
               if (instance) markerRefs.current.set(v.id, instance);
               else markerRefs.current.delete(v.id);
             }}
           >
-            <Tooltip direction="top" offset={[0, -8]} opacity={1} className="text-xs font-medium">
-              {pickLocalized(v, "name", lang)}
-            </Tooltip>
+            {zoom < LABEL_MIN_ZOOM && (
+              <Tooltip direction="top" offset={[0, -8]} opacity={1} className="text-xs font-medium">
+                {pickLocalized(v, "name", lang)}
+              </Tooltip>
+            )}
             <Popup>
               <div className="text-sm">
                 <div className="font-semibold">{pickLocalized(v, "name", lang)}</div>
