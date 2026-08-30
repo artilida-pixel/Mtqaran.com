@@ -22,7 +22,7 @@ export type RegionListItem = {
 };
 
 export const STATUS_COLORS: Record<string, string> = {
-  proposed: "#9ca3af",
+  proposed: "#ef7d1f",
   funding: "#f2a950",
   building: "#1f3a5f",
   completed: "#3f7a5c",

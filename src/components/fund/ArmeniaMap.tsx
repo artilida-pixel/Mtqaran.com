@@ -192,10 +192,10 @@ export default function ArmeniaMap({
       const isActive = slug === activeRegionSlug;
       const isHovered = slug === hoveredSlug;
       return {
-        color: isActive ? "var(--brand-apricot)" : interactive ? "rgba(239,125,31,0.55)" : "rgba(247,239,228,0.25)",
+        color: isActive || isHovered ? "var(--on-ink)" : interactive ? "rgba(247,239,228,0.35)" : "rgba(247,239,228,0.25)",
         weight: isActive || isHovered ? 2.5 : 1.25,
-        fillColor: isActive || isHovered ? "var(--brand-apricot)" : "var(--ink-2)",
-        fillOpacity: isHovered ? 0.75 : isActive ? 0.55 : interactive ? 0.35 : 0.5,
+        fillColor: "var(--ink-2)",
+        fillOpacity: isHovered ? 0.75 : isActive ? 0.6 : interactive ? 0.35 : 0.5,
       };
     },
     [knownSlugs, activeRegionSlug, hoveredSlug]
