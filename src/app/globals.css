@@ -78,6 +78,13 @@ body {
   background: var(--ink) !important;
 }
 
+/* Leaflet makes clicked vector layers (region polygons) focusable for
+   keyboard accessibility, which makes the browser draw a default focus
+   rectangle around the shape's bounding box. Suppress that outline. */
+.leaflet-interactive:focus {
+  outline: none;
+}
+
 .armenia-region {
   transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
   cursor: pointer;

@@ -6,7 +6,7 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import L from "leaflet";
 import { GeoJSON, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { Feature, FeatureCollection } from "geojson";
 import type { Locale } from "@/lib/i18n";
@@ -113,9 +113,10 @@ export default function ArmeniaMap({
   const knownSlugs = useMemo(() => new Set(villages.map((v) => v.regionSlug)), [villages]);
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
-  const [hoveredName, setHoveredName] = useState<string | null>(null);
+  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
   const [zoom, setZoom] = useState(MIN_ZOOM_FOR_SIZE);
   const dotSize = markerSizeForZoom(zoom);
+  const hoveredName = hoveredSlug ? regionNameBySlug.get(hoveredSlug) ?? null : null;
 
   useEffect(() => {
     if (!selectedVillageId) return;
@@ -131,17 +132,21 @@ export default function ArmeniaMap({
     return slugifyShapeName(name);
   }
 
-  function styleFor(feature?: Feature) {
-    const slug = featureSlug(feature);
-    const interactive = knownSlugs.has(slug);
-    const isActive = slug === activeRegionSlug;
-    return {
-      color: isActive ? "var(--brand-apricot)" : interactive ? "rgba(239,125,31,0.55)" : "rgba(247,239,228,0.25)",
-      weight: isActive ? 2.5 : 1.25,
-      fillColor: isActive ? "var(--brand-apricot)" : "var(--ink-2)",
-      fillOpacity: isActive ? 0.55 : interactive ? 0.35 : 0.5,
-    };
-  }
+  const styleFor = useCallback(
+    (feature?: Feature) => {
+      const slug = featureSlug(feature);
+      const interactive = knownSlugs.has(slug);
+      const isActive = slug === activeRegionSlug;
+      const isHovered = slug === hoveredSlug;
+      return {
+        color: isActive ? "var(--brand-apricot)" : interactive ? "rgba(239,125,31,0.55)" : "rgba(247,239,228,0.25)",
+        weight: isActive || isHovered ? 2.5 : 1.25,
+        fillColor: isActive || isHovered ? "var(--brand-apricot)" : "var(--ink-2)",
+        fillOpacity: isHovered ? 0.75 : isActive ? 0.55 : interactive ? 0.35 : 0.5,
+      };
+    },
+    [knownSlugs, activeRegionSlug, hoveredSlug]
+  );
 
   return (
     <div className="relative h-full w-full">
@@ -169,20 +174,9 @@ export default function ArmeniaMap({
           const slug = featureSlug(feature);
           const name = (feature.properties as { shapeName?: string } | undefined)?.shapeName ?? "";
           if (knownSlugs.has(slug)) {
-            layer.bindTooltip(name, { sticky: true, className: "text-xs" });
             layer.on("click", () => onRegionClick(slug));
-            layer.on("mouseover", () => {
-              (layer as L.Path).setStyle({
-                fillOpacity: 0.75,
-                fillColor: "var(--brand-apricot)",
-                weight: 2.5,
-              });
-              setHoveredName(regionNameBySlug.get(slug) ?? name);
-            });
-            layer.on("mouseout", () => {
-              (layer as L.Path).setStyle(styleFor(feature) as L.PathOptions);
-              setHoveredName(null);
-            });
+            layer.on("mouseover", () => setHoveredSlug(slug));
+            layer.on("mouseout", () => setHoveredSlug(null));
           }
         }}
       />
