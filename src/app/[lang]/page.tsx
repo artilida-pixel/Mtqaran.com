@@ -42,6 +42,7 @@ export default async function HomePage({
       <section className="mx-auto grid max-w-6xl gap-6 px-4 -mt-10 pb-16 sm:grid-cols-2">
         <Link
           href={`/${locale}/academy`}
+          prefetch={false}
           className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-lg transition-transform hover:-translate-y-1"
         >
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-apricot/15" />
@@ -58,6 +59,7 @@ export default async function HomePage({
 
         <Link
           href={`/${locale}/fund`}
+          prefetch={false}
           className="group relative overflow-hidden rounded-3xl border border-ink bg-ink p-8 text-on-ink shadow-lg transition-transform hover:-translate-y-1"
         >
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-apricot/25" />

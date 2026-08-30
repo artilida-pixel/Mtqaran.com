@@ -23,10 +23,18 @@ export default function Header({
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-wide md:flex">
-          <Link href={`/${lang}/academy`} className="text-on-ink-muted transition-colors hover:text-brand-apricot">
+          <Link
+            href={`/${lang}/academy`}
+            prefetch={false}
+            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
+          >
             {dict.nav.academy}
           </Link>
-          <Link href={`/${lang}/fund`} className="text-on-ink-muted transition-colors hover:text-brand-apricot">
+          <Link
+            href={`/${lang}/fund`}
+            prefetch={false}
+            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
+          >
             {dict.nav.fund}
           </Link>
         </nav>
