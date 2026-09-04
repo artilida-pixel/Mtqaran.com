@@ -1990,6 +1990,16 @@
     "population": 4104
   },
   {
+    "slug": "tigranashen-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Տիգրանաշեն",
+    "nameRu": "Тигранашен",
+    "nameEn": "Tigranashen",
+    "lat": 39.7856,
+    "lng": 44.9436,
+    "population": 149
+  },
+  {
     "slug": "urtsadzor-ararat",
     "regionSlug": "ararat",
     "nameHy": "Ուրցաձոր",
@@ -2208,6 +2218,16 @@
     "lat": 40.09729,
     "lng": 43.95569,
     "population": 1633
+  },
+  {
+    "slug": "araks-armavir",
+    "regionSlug": "armavir",
+    "nameHy": "Արաքս",
+    "nameRu": "Аракс",
+    "nameEn": "Araks",
+    "lat": 40.05548,
+    "lng": 44.30292,
+    "population": 2115
   },
   {
     "slug": "aratashen-armavir",
@@ -4438,6 +4458,16 @@
     "lat": 40.31668,
     "lng": 44.57785,
     "population": 7048
+  },
+  {
+    "slug": "nor-gyugh-kotayk",
+    "regionSlug": "kotayk",
+    "nameHy": "Նոր Գյուղ",
+    "nameRu": "Нор Гюх",
+    "nameEn": "Nor Gyugh",
+    "lat": 40.2649663,
+    "lng": 44.6513927,
+    "population": null
   },
   {
     "slug": "nurnus-kotayk",
