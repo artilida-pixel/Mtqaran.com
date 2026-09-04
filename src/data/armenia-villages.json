@@ -300,6 +300,16 @@
     "population": 33
   },
   {
+    "slug": "garnahovit-aragatsotn",
+    "regionSlug": "aragatsotn",
+    "nameHy": "Գառնահովիտ",
+    "nameRu": "Гарнаовит",
+    "nameEn": "Garnahovit",
+    "lat": 40.4973813,
+    "lng": 43.9545817,
+    "population": null
+  },
+  {
     "slug": "geghadir-aragatsotn",
     "regionSlug": "aragatsotn",
     "nameHy": "Գեղադիր",
@@ -530,6 +540,16 @@
     "population": 2058
   },
   {
+    "slug": "lernapar-aragatsotn",
+    "regionSlug": "aragatsotn",
+    "nameHy": "Լեռնապար",
+    "nameRu": "Лернапар",
+    "nameEn": "Lernapar",
+    "lat": 40.7424086,
+    "lng": 44.1617014,
+    "population": null
+  },
+  {
     "slug": "lernarot-aragatsotn",
     "regionSlug": "aragatsotn",
     "nameHy": "Լեռնարոտ",
@@ -640,6 +660,16 @@
     "population": 1114
   },
   {
+    "slug": "nigatun-aragatsotn",
+    "regionSlug": "aragatsotn",
+    "nameHy": "Նիգատուն",
+    "nameRu": "Нигатун",
+    "nameEn": "Nigatun",
+    "lat": 40.4106155,
+    "lng": 44.3735268,
+    "population": null
+  },
+  {
     "slug": "nigavan-aragatsotn",
     "regionSlug": "aragatsotn",
     "nameHy": "Նիգավան",
@@ -688,6 +718,16 @@
     "lat": 40.30011,
     "lng": 44.38892,
     "population": 1861
+  },
+  {
+    "slug": "norashen-aragatsotn",
+    "regionSlug": "aragatsotn",
+    "nameHy": "Նորաշեն",
+    "nameRu": "Норашен",
+    "nameEn": "Norashen",
+    "lat": 40.6565317,
+    "lng": 44.0767236,
+    "population": null
   },
   {
     "slug": "ohanavan-aragatsotn",
@@ -970,6 +1010,16 @@
     "population": 246
   },
   {
+    "slug": "ujan-aragatsotn",
+    "regionSlug": "aragatsotn",
+    "nameHy": "Ուջան",
+    "nameRu": "Уджан",
+    "nameEn": "Ujan",
+    "lat": 40.2959129,
+    "lng": 44.2078222,
+    "population": null
+  },
+  {
     "slug": "ushi-aragatsotn",
     "regionSlug": "aragatsotn",
     "nameHy": "Ուշի",
@@ -1170,6 +1220,16 @@
     "population": 8287
   },
   {
+    "slug": "arbat-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Արբաթ",
+    "nameRu": "Арбат",
+    "nameEn": "Arbat",
+    "lat": 40.1388552,
+    "lng": 44.4032024,
+    "population": null
+  },
+  {
     "slug": "arevabuyr-ararat",
     "regionSlug": "ararat",
     "nameHy": "Արեվաբույր",
@@ -1298,6 +1358,16 @@
     "lat": 39.98053,
     "lng": 44.51392,
     "population": 1841
+  },
+  {
+    "slug": "bardzrashen-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Բարձրաշեն",
+    "nameRu": "Барцрашен",
+    "nameEn": "Bardzrashen",
+    "lat": 40.0807435,
+    "lng": 44.5739267,
+    "population": null
   },
   {
     "slug": "berdik-ararat",
@@ -1490,6 +1560,16 @@
     "population": 2722
   },
   {
+    "slug": "hayanist-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Հայանիստ",
+    "nameRu": "Айанист",
+    "nameEn": "Hayanist",
+    "lat": 40.1209353,
+    "lng": 44.3778121,
+    "population": null
+  },
+  {
     "slug": "hnaberd-ararat",
     "regionSlug": "ararat",
     "nameHy": "Հնաբերդ",
@@ -1498,6 +1578,16 @@
     "lat": 40.00611,
     "lng": 44.57433,
     "population": 607
+  },
+  {
+    "slug": "hovtashat-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Հովտաշատ",
+    "nameRu": "Овташат",
+    "nameEn": "Hovtashat",
+    "lat": 40.1035802,
+    "lng": 44.3433459,
+    "population": null
   },
   {
     "slug": "hovtashen-ararat",
@@ -1540,6 +1630,16 @@
     "population": 3066
   },
   {
+    "slug": "kakavaberd-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Կաքավաբերդ",
+    "nameRu": "Какаваберд",
+    "nameEn": "Kakavaberd",
+    "lat": 40.07222,
+    "lng": 44.5625,
+    "population": null
+  },
+  {
     "slug": "kanachut-ararat",
     "regionSlug": "ararat",
     "nameHy": "Կանաչուտ",
@@ -1578,6 +1678,16 @@
     "lat": 39.82788,
     "lng": 44.97229,
     "population": 207
+  },
+  {
+    "slug": "lanjazat-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Լանջազատ",
+    "nameRu": "Ланджазат",
+    "nameEn": "Lanjazat",
+    "lat": 40.0663824,
+    "lng": 44.5791812,
+    "population": null
   },
   {
     "slug": "lusarat-ararat",
@@ -1770,6 +1880,16 @@
     "population": 1588
   },
   {
+    "slug": "paruyr-sevak-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Պարույր Սևակ",
+    "nameRu": "Паруйр Севак",
+    "nameEn": "Paruyr Sevak",
+    "lat": 39.7669127,
+    "lng": 44.914006,
+    "population": null
+  },
+  {
     "slug": "pokr-vedi-ararat",
     "regionSlug": "ararat",
     "nameHy": "Փոքր Վեդի",
@@ -1778,6 +1898,16 @@
     "lat": 39.90289,
     "lng": 44.6029,
     "population": 3519
+  },
+  {
+    "slug": "ranchpar-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Ռանչպար",
+    "nameRu": "Ранчпар",
+    "nameEn": "Ranchpar",
+    "lat": 40.0270258,
+    "lng": 44.3664969,
+    "population": null
   },
   {
     "slug": "sayat-nova-ararat",
@@ -1808,6 +1938,16 @@
     "lat": 39.94171,
     "lng": 44.57233,
     "population": 4387
+  },
+  {
+    "slug": "sipanik-ararat",
+    "regionSlug": "ararat",
+    "nameHy": "Սիփանիկ",
+    "nameRu": "Сипаник",
+    "nameEn": "Sipanik",
+    "lat": 40.0810342,
+    "lng": 44.3591131,
+    "population": null
   },
   {
     "slug": "sis-ararat",
@@ -2110,6 +2250,16 @@
     "population": 2016
   },
   {
+    "slug": "arevik-armavir",
+    "regionSlug": "armavir",
+    "nameHy": "Արևիկ",
+    "nameRu": "Аревик",
+    "nameEn": "Arevik",
+    "lat": 40.1002082,
+    "lng": 44.0916709,
+    "population": null
+  },
+  {
     "slug": "argavand-armavir",
     "regionSlug": "armavir",
     "nameHy": "Արգավանդ",
@@ -2200,6 +2350,16 @@
     "population": 2171
   },
   {
+    "slug": "aygeshat-armavir-2",
+    "regionSlug": "armavir",
+    "nameHy": "Այգեշատ",
+    "nameRu": "Айгешат",
+    "nameEn": "Aygeshat",
+    "lat": 40.23583,
+    "lng": 44.28667,
+    "population": null
+  },
+  {
     "slug": "aygevan-armavir",
     "regionSlug": "armavir",
     "nameHy": "Այգեվան",
@@ -2258,6 +2418,16 @@
     "lat": 40.22648,
     "lng": 43.8719,
     "population": 4695
+  },
+  {
+    "slug": "dasht-armavir",
+    "regionSlug": "armavir",
+    "nameHy": "Դաշտ",
+    "nameRu": "Дашт",
+    "nameEn": "Dasht",
+    "lat": 40.2256705,
+    "lng": 44.2993765,
+    "population": null
   },
   {
     "slug": "doghs-armavir",
@@ -2478,6 +2648,16 @@
     "lat": 40.24011,
     "lng": 43.87102,
     "population": 2359
+  },
+  {
+    "slug": "lernamerdz-armavir",
+    "regionSlug": "armavir",
+    "nameHy": "Լեռնամերձ",
+    "nameRu": "Лернамердз",
+    "nameEn": "Lernamerdz",
+    "lat": 40.2546069,
+    "lng": 44.2631953,
+    "population": null
   },
   {
     "slug": "lukashin-armavir",
@@ -2728,6 +2908,26 @@
     "lat": 40.213,
     "lng": 43.77033,
     "population": 1132
+  },
+  {
+    "slug": "shenik-armavir-2",
+    "regionSlug": "armavir",
+    "nameHy": "Շենիկ",
+    "nameRu": "Шеник",
+    "nameEn": "Shenik",
+    "lat": 40.2,
+    "lng": 43.767,
+    "population": null
+  },
+  {
+    "slug": "tairov-armavir",
+    "regionSlug": "armavir",
+    "nameHy": "Թաիրով",
+    "nameRu": "Таиров",
+    "nameEn": "Tairov",
+    "lat": 40.1614911,
+    "lng": 44.4231776,
+    "population": null
   },
   {
     "slug": "talvorik-armavir",
@@ -3020,6 +3220,16 @@
     "population": 282
   },
   {
+    "slug": "chapkut-gegharkunik",
+    "regionSlug": "gegharkunik",
+    "nameHy": "Ճապկուտ",
+    "nameRu": "Чапкут",
+    "nameEn": "Chapkut",
+    "lat": 40.6516265,
+    "lng": 45.2102644,
+    "population": null
+  },
+  {
     "slug": "chkalovka-gegharkunik",
     "regionSlug": "gegharkunik",
     "nameHy": "Չկալովկա",
@@ -3270,6 +3480,16 @@
     "population": 175
   },
   {
+    "slug": "kutakan-gegharkunik",
+    "regionSlug": "gegharkunik",
+    "nameHy": "Կուտական",
+    "nameRu": "Кутакан",
+    "nameEn": "Kutakan",
+    "lat": 40.2676093,
+    "lng": 45.8369083,
+    "population": null
+  },
+  {
     "slug": "lanjaghbyur-gegharkunik",
     "regionSlug": "gegharkunik",
     "nameHy": "Լանջաղբյուր",
@@ -3438,6 +3658,16 @@
     "lat": 40.37793,
     "lng": 45.18048,
     "population": 6105
+  },
+  {
+    "slug": "nshkharq-gegharkunik",
+    "regionSlug": "gegharkunik",
+    "nameHy": "Նշխարք",
+    "nameRu": "Ншхарк",
+    "nameEn": "Nshkharq",
+    "lat": 40.0042992,
+    "lng": 45.2399361,
+    "population": null
   },
   {
     "slug": "pambak-gegharkunik",
@@ -3728,6 +3958,16 @@
     "lat": 40.20428,
     "lng": 45.19209,
     "population": 5337
+  },
+  {
+    "slug": "zariver-gegharkunik",
+    "regionSlug": "gegharkunik",
+    "nameHy": "Զարիվեր",
+    "nameRu": "Заривер",
+    "nameEn": "Zariver",
+    "lat": 40.26072,
+    "lng": 45.8376915,
+    "population": null
   },
   {
     "slug": "zolakar-gegharkunik",
@@ -4390,6 +4630,16 @@
     "population": 502
   },
   {
+    "slug": "akori-lori",
+    "regionSlug": "lori",
+    "nameHy": "Աքորի",
+    "nameRu": "Акори",
+    "nameEn": "Akori",
+    "lat": 41.0902722,
+    "lng": 44.6176351,
+    "population": null
+  },
+  {
     "slug": "amoj-lori",
     "regionSlug": "lori",
     "nameHy": "Ամոջ",
@@ -4730,6 +4980,16 @@
     "population": 1255
   },
   {
+    "slug": "gogavan-lori",
+    "regionSlug": "lori",
+    "nameHy": "Գոգավան",
+    "nameRu": "Гогаван",
+    "nameEn": "Gogavan",
+    "lat": 41.2028467,
+    "lng": 44.3156298,
+    "population": null
+  },
+  {
     "slug": "gugark-lori",
     "regionSlug": "lori",
     "nameHy": "Գուգարք",
@@ -4738,6 +4998,16 @@
     "lat": 40.8046,
     "lng": 44.54025,
     "population": 5809
+  },
+  {
+    "slug": "gushar-lori",
+    "regionSlug": "lori",
+    "nameHy": "Գուշար",
+    "nameRu": "Гушар",
+    "nameEn": "Gushar",
+    "lat": 40.7369761,
+    "lng": 44.4133029,
+    "population": null
   },
   {
     "slug": "gyulagarak-lori",
@@ -5520,6 +5790,16 @@
     "population": 873
   },
   {
+    "slug": "zhamatun-lori",
+    "regionSlug": "lori",
+    "nameHy": "Ժամատուն",
+    "nameRu": "Жаматун",
+    "nameEn": "Zhamatun",
+    "lat": 40.7542293,
+    "lng": 44.4083118,
+    "population": null
+  },
+  {
     "slug": "aghin-shirak",
     "regionSlug": "shirak",
     "nameHy": "Աղին",
@@ -5630,6 +5910,16 @@
     "population": 1501
   },
   {
+    "slug": "aravet-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Արավետ",
+    "nameRu": "Аравет",
+    "nameEn": "Aravet",
+    "lat": 41.0452216,
+    "lng": 43.7729698,
+    "population": null
+  },
+  {
     "slug": "ardenis-shirak",
     "regionSlug": "shirak",
     "nameHy": "Արդենիս",
@@ -5648,6 +5938,16 @@
     "lat": 40.93146,
     "lng": 43.75237,
     "population": 476
+  },
+  {
+    "slug": "arevik-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Արևիկ",
+    "nameRu": "Аревик",
+    "nameEn": "Arevik",
+    "lat": 40.7426798,
+    "lng": 43.9037633,
+    "population": null
   },
   {
     "slug": "arevshat-shirak",
@@ -5720,6 +6020,16 @@
     "population": 229
   },
   {
+    "slug": "bardzrashen-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Բարձրաշեն",
+    "nameRu": "Барцрашен",
+    "nameEn": "Bardzrashen",
+    "lat": 40.5937251,
+    "lng": 43.7404147,
+    "population": null
+  },
+  {
     "slug": "basen-shirak",
     "regionSlug": "shirak",
     "nameHy": "Բասեն",
@@ -5728,6 +6038,16 @@
     "lat": 40.75767,
     "lng": 43.99274,
     "population": 1186
+  },
+  {
+    "slug": "bashgyugh-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Բաշգյուղ",
+    "nameRu": "Башгюх",
+    "nameEn": "Bashgyugh",
+    "lat": 40.9453372,
+    "lng": 43.9692897,
+    "population": null
   },
   {
     "slug": "bavra-shirak",
@@ -6190,6 +6510,16 @@
     "population": 783
   },
   {
+    "slug": "keti-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Քեթի",
+    "nameRu": "Кети",
+    "nameEn": "Keti",
+    "lat": 40.8736621,
+    "lng": 43.8447682,
+    "population": null
+  },
+  {
     "slug": "krasar-shirak",
     "regionSlug": "shirak",
     "nameHy": "Կրասար",
@@ -6248,6 +6578,16 @@
     "lat": 40.86704,
     "lng": 43.92042,
     "population": 109
+  },
+  {
+    "slug": "lorasar-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Լորասար",
+    "nameRu": "Лорасар",
+    "nameEn": "Lorasar",
+    "lat": 41.112941,
+    "lng": 43.6013343,
+    "population": null
   },
   {
     "slug": "lusaghbyur-shirak",
@@ -6690,6 +7030,16 @@
     "population": 1365
   },
   {
+    "slug": "yerizak-shirak",
+    "regionSlug": "shirak",
+    "nameHy": "Երիզակ",
+    "nameRu": "Еризак",
+    "nameEn": "Yerizak",
+    "lat": 40.9809451,
+    "lng": 43.6424931,
+    "population": null
+  },
+  {
     "slug": "zarishat-shirak",
     "regionSlug": "shirak",
     "nameHy": "Զարիշատ",
@@ -6738,6 +7088,16 @@
     "lat": 39.20684,
     "lng": 46.5446,
     "population": 197
+  },
+  {
+    "slug": "aghbullagh-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Աղբուլաղ",
+    "nameRu": "Ахбулах",
+    "nameEn": "Aghbullagh",
+    "lat": 39.3554294,
+    "lng": 46.3887736,
+    "population": null
   },
   {
     "slug": "aghitu-syunik",
@@ -6880,6 +7240,16 @@
     "population": 390
   },
   {
+    "slug": "aygedzor-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Այգեձոր",
+    "nameRu": "Айгедзор",
+    "nameEn": "Aygedzor",
+    "lat": 38.9784803,
+    "lng": 46.2079196,
+    "population": null
+  },
+  {
     "slug": "babikavan-syunik",
     "regionSlug": "syunik",
     "nameHy": "Բաբիկավան",
@@ -7000,6 +7370,16 @@
     "population": 58
   },
   {
+    "slug": "dzorak-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Ձորակ",
+    "nameRu": "Дзорак",
+    "nameEn": "Dzorak",
+    "lat": 39.3437887,
+    "lng": 46.4013233,
+    "population": null
+  },
+  {
     "slug": "dzorastan-syunik",
     "regionSlug": "syunik",
     "nameHy": "Ձորաստան",
@@ -7018,6 +7398,16 @@
     "lat": 39.1719,
     "lng": 46.4196,
     "population": 334
+  },
+  {
+    "slug": "geghavank-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Գեղավանք",
+    "nameRu": "Гехаванк",
+    "nameEn": "Geghavank",
+    "lat": 39.2234062,
+    "lng": 46.1843684,
+    "population": null
   },
   {
     "slug": "geghi-syunik",
@@ -7180,6 +7570,26 @@
     "population": 223
   },
   {
+    "slug": "kard-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Կարդ",
+    "nameRu": "Кард",
+    "nameEn": "Kard",
+    "lat": 39.2192312,
+    "lng": 46.1071957,
+    "population": null
+  },
+  {
+    "slug": "karut-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Քարուտ",
+    "nameRu": "Карут",
+    "nameEn": "Karut",
+    "lat": 39.2700413,
+    "lng": 46.1181875,
+    "population": null
+  },
+  {
     "slug": "kashuni-syunik",
     "regionSlug": "syunik",
     "nameHy": "Քաշունի",
@@ -7220,6 +7630,16 @@
     "population": 62
   },
   {
+    "slug": "khnatsakh-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Խնածախ",
+    "nameRu": "Хнацах",
+    "nameEn": "Khnatsakh",
+    "lat": 39.6055495,
+    "lng": 46.3925148,
+    "population": null
+  },
+  {
     "slug": "khndzoresk-syunik",
     "regionSlug": "syunik",
     "nameHy": "Խնձորեսկ",
@@ -7228,6 +7648,16 @@
     "lat": 39.51325,
     "lng": 46.43141,
     "population": 1922
+  },
+  {
+    "slug": "khordzor-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Խորձոր",
+    "nameRu": "Хордзор",
+    "nameEn": "Khordzor",
+    "lat": 39.2240949,
+    "lng": 46.466105,
+    "population": null
   },
   {
     "slug": "khot-syunik",
@@ -7248,6 +7678,26 @@
     "lat": 39.62138,
     "lng": 46.35128,
     "population": 242
+  },
+  {
+    "slug": "kitsk-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Կիցք",
+    "nameRu": "Кицк",
+    "nameEn": "Kitsk",
+    "lat": 39.2883811,
+    "lng": 46.1096347,
+    "population": null
+  },
+  {
+    "slug": "kornidzor-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Կոռնիձոր",
+    "nameRu": "Корнидзор",
+    "nameEn": "Kornidzor",
+    "lat": 39.5474151,
+    "lng": 46.5305995,
+    "population": null
   },
   {
     "slug": "kuris-syunik",
@@ -7320,6 +7770,16 @@
     "population": 140
   },
   {
+    "slug": "nerkin-giratagh-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Ներքին Գիրաթաղ",
+    "nameRu": "Неркин Гиратах",
+    "nameEn": "Nerkin Giratagh",
+    "lat": 39.2231568,
+    "lng": 46.2698708,
+    "population": null
+  },
+  {
     "slug": "nerkin-hand-syunik",
     "regionSlug": "syunik",
     "nameHy": "Ներքին Հանդ",
@@ -7328,6 +7788,16 @@
     "lat": 39.04131,
     "lng": 46.51623,
     "population": 83
+  },
+  {
+    "slug": "nerkin-khndzoresk-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Ներքին Խնձորեսկ",
+    "nameRu": "Неркин Хндзореск",
+    "nameEn": "Nerkin Khndzoresk",
+    "lat": 39.4941293,
+    "lng": 46.50292,
+    "population": null
   },
   {
     "slug": "nerkin-khotanan-syunik",
@@ -7520,6 +7990,16 @@
     "population": 70
   },
   {
+    "slug": "shurnukh-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Շուռնուխ",
+    "nameRu": "Шурнух",
+    "nameEn": "Shurnukh",
+    "lat": 39.3813419,
+    "lng": 46.3965048,
+    "population": null
+  },
+  {
     "slug": "shvanidzor-syunik",
     "regionSlug": "syunik",
     "nameHy": "Շվանիձոր",
@@ -7580,6 +8060,16 @@
     "population": 84
   },
   {
+    "slug": "tanahat-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Թանահատ",
+    "nameRu": "Танаат",
+    "nameEn": "Tanahat",
+    "lat": 39.4345499,
+    "lng": 45.9217388,
+    "population": null
+  },
+  {
     "slug": "tandzatap-syunik",
     "regionSlug": "syunik",
     "nameHy": "Տանձաթափ",
@@ -7618,6 +8108,16 @@
     "lat": 39.45126,
     "lng": 45.96264,
     "population": 143
+  },
+  {
+    "slug": "tatev-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Տաթև",
+    "nameRu": "Татев",
+    "nameEn": "Tatev",
+    "lat": 39.3840285,
+    "lng": 46.2436662,
+    "population": null
   },
   {
     "slug": "tavrus-syunik",
@@ -7750,6 +8250,16 @@
     "population": 12
   },
   {
+    "slug": "vanand-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Վանանդ",
+    "nameRu": "Вананд",
+    "nameEn": "Vanand",
+    "lat": 39.3419099,
+    "lng": 46.4301591,
+    "population": null
+  },
+  {
     "slug": "vanek-syunik",
     "regionSlug": "syunik",
     "nameHy": "Վանեք",
@@ -7780,6 +8290,26 @@
     "population": 79
   },
   {
+    "slug": "verin-geghavanq-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Վերին Գեղավանք",
+    "nameRu": "Верин Гехаванк",
+    "nameEn": "Verin Geghavanq",
+    "lat": 39.2228851,
+    "lng": 46.1838978,
+    "population": null
+  },
+  {
+    "slug": "verin-giratagh-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Վերին Գիրաթաղ",
+    "nameRu": "Верин Гиратах",
+    "nameEn": "Verin Giratagh",
+    "lat": 39.2397253,
+    "lng": 46.2648885,
+    "population": null
+  },
+  {
     "slug": "verin-khotanan-syunik",
     "regionSlug": "syunik",
     "nameHy": "Վերին Խոտանան",
@@ -7798,6 +8328,26 @@
     "lat": 39.53117,
     "lng": 46.31829,
     "population": 2224
+  },
+  {
+    "slug": "vocheti-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Ոչեթի",
+    "nameRu": "Вочети",
+    "nameEn": "Vocheti",
+    "lat": 39.2193602,
+    "lng": 46.1332522,
+    "population": null
+  },
+  {
+    "slug": "vorotan-syunik",
+    "regionSlug": "syunik",
+    "nameHy": "Որոտան",
+    "nameRu": "Воротан",
+    "nameEn": "Vorotan",
+    "lat": 39.425018,
+    "lng": 46.375865,
+    "population": null
   },
   {
     "slug": "vorotnavan-syunik",
@@ -7880,6 +8430,16 @@
     "population": 496
   },
   {
+    "slug": "archis-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Արճիս",
+    "nameRu": "Арчис",
+    "nameEn": "Archis",
+    "lat": 41.1639242,
+    "lng": 44.8767083,
+    "population": null
+  },
+  {
     "slug": "artsvaberd-tavush",
     "regionSlug": "tavush",
     "nameHy": "Արծվաբերդ",
@@ -7920,6 +8480,16 @@
     "population": 364
   },
   {
+    "slug": "azatamut-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Ազատամուտ",
+    "nameRu": "Азатамут",
+    "nameEn": "Azatamut",
+    "lat": 40.9891451,
+    "lng": 45.2064154,
+    "population": null
+  },
+  {
     "slug": "baghanis-tavush",
     "regionSlug": "tavush",
     "nameHy": "Բաղանիս",
@@ -7928,6 +8498,16 @@
     "lat": 41.10925,
     "lng": 45.05658,
     "population": 866
+  },
+  {
+    "slug": "bagratashen-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Բագրատաշեն",
+    "nameRu": "Баграташен",
+    "nameEn": "Bagratashen",
+    "lat": 41.246168,
+    "lng": 44.8162965,
+    "population": null
   },
   {
     "slug": "barekamavan-tavush",
@@ -7960,6 +8540,16 @@
     "population": 413
   },
   {
+    "slug": "chermakavan-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Ճերմակավան",
+    "nameRu": "Chermakavan",
+    "nameEn": "Chermakavan",
+    "lat": 40.7080882,
+    "lng": 45.0290852,
+    "population": null
+  },
+  {
     "slug": "chinari-tavush",
     "regionSlug": "tavush",
     "nameHy": "Չինարի",
@@ -7990,6 +8580,16 @@
     "population": 667
   },
   {
+    "slug": "debetavan-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Դեբեդավան",
+    "nameRu": "Дебедаван",
+    "nameEn": "Debetavan",
+    "lat": 41.2796525,
+    "lng": 44.813489,
+    "population": null
+  },
+  {
     "slug": "deghdzavan-tavush",
     "regionSlug": "tavush",
     "nameHy": "Դեղձավան",
@@ -7998,6 +8598,16 @@
     "lat": 41.25646,
     "lng": 44.88905,
     "population": 298
+  },
+  {
+    "slug": "ditavan-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Դիտավան",
+    "nameRu": "Дитаван",
+    "nameEn": "Ditavan",
+    "lat": 40.9732941,
+    "lng": 45.2050446,
+    "population": null
   },
   {
     "slug": "dovegh-tavush",
@@ -8018,6 +8628,16 @@
     "lat": 40.84291,
     "lng": 45.16132,
     "population": 3563
+  },
+  {
+    "slug": "geghatap-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Գեղատափ",
+    "nameRu": "Гехатап",
+    "nameEn": "Geghatap",
+    "lat": 40.6769603,
+    "lng": 44.9839443,
+    "population": null
   },
   {
     "slug": "getahovit-tavush",
@@ -8080,6 +8700,16 @@
     "population": 285
   },
   {
+    "slug": "jujevan-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Ջուջևան",
+    "nameRu": "Джуджеван",
+    "nameEn": "Jujevan",
+    "lat": 41.1298624,
+    "lng": 45.0104844,
+    "population": null
+  },
+  {
     "slug": "kayan-tavush",
     "regionSlug": "tavush",
     "nameHy": "Կայան",
@@ -8138,6 +8768,16 @@
     "lat": 41.13243,
     "lng": 45.1295,
     "population": 1922
+  },
+  {
+    "slug": "lchkadzor-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Լճկաձոր",
+    "nameRu": "Лчкадзор",
+    "nameEn": "Lchkadzor",
+    "lat": 41.1781129,
+    "lng": 44.9053555,
+    "population": null
   },
   {
     "slug": "lusadzor-tavush",
@@ -8210,6 +8850,16 @@
     "population": 1523
   },
   {
+    "slug": "ptghavan-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Պտղավան",
+    "nameRu": "Птгаван",
+    "nameEn": "Ptghavan",
+    "lat": 41.2296118,
+    "lng": 44.8554459,
+    "population": null
+  },
+  {
     "slug": "sarigyugh-tavush",
     "regionSlug": "tavush",
     "nameHy": "Սարիգյուղ",
@@ -8218,6 +8868,16 @@
     "lat": 41.03531,
     "lng": 45.14486,
     "population": 1276
+  },
+  {
+    "slug": "sevkar-tavush",
+    "regionSlug": "tavush",
+    "nameHy": "Սևքար",
+    "nameRu": "Севкар",
+    "nameEn": "Sevkar",
+    "lat": 41.01802,
+    "lng": 45.144632,
+    "population": null
   },
   {
     "slug": "tavush-tavush",
@@ -8358,6 +9018,26 @@
     "lat": 39.90008,
     "lng": 45.25012,
     "population": 408
+  },
+  {
+    "slug": "akhta-vayots-dzor",
+    "regionSlug": "vayots-dzor",
+    "nameHy": "Ախտա",
+    "nameRu": "Ахта",
+    "nameEn": "Akhta",
+    "lat": 39.6470238,
+    "lng": 45.5633115,
+    "population": null
+  },
+  {
+    "slug": "amaghu-vayots-dzor",
+    "regionSlug": "vayots-dzor",
+    "nameHy": "Ամաղու",
+    "nameRu": "Амагу",
+    "nameEn": "Amaghu",
+    "lat": 39.6837925,
+    "lng": 45.213491,
+    "population": null
   },
   {
     "slug": "arates-vayots-dzor",
@@ -8540,6 +9220,16 @@
     "population": 163
   },
   {
+    "slug": "horadis-vayots-dzor",
+    "regionSlug": "vayots-dzor",
+    "nameHy": "Հորադիս",
+    "nameRu": "Орадис",
+    "nameEn": "Horadis",
+    "lat": 39.6221126,
+    "lng": 45.3758086,
+    "population": null
+  },
+  {
     "slug": "horbategh-vayots-dzor",
     "regionSlug": "vayots-dzor",
     "nameHy": "Հորբատեղ",
@@ -8558,6 +9248,16 @@
     "lat": 39.86389,
     "lng": 45.23328,
     "population": 237
+  },
+  {
+    "slug": "kalasar-vayots-dzor",
+    "regionSlug": "vayots-dzor",
+    "nameHy": "Կալասար",
+    "nameRu": "Каласар",
+    "nameEn": "Kalasar",
+    "lat": 39.8825739,
+    "lng": 45.4206799,
+    "population": null
   },
   {
     "slug": "kapuyt-vayots-dzor",
