@@ -59,7 +59,9 @@
     "propose_project_text": "Have an idea for your village — a playground, school repair, street lighting? Tell us about it.",
     "search_placeholder": "Search a village…",
     "search_no_results": "No matches found",
-    "search_more": "and {count} more…"
+    "search_more": "and {count} more…",
+    "expand_map": "Expand map to full screen",
+    "collapse_map": "Collapse map"
   },
   "village": {
     "back_to_map": "Back to map",

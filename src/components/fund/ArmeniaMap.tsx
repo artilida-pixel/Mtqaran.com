@@ -131,6 +131,47 @@ function AttributionPrefixFix() {
   return null;
 }
 
+// The map container's actual pixel size changes when the fullscreen wrapper
+// toggles, but Leaflet only measures that on its own resize/orientation
+// listeners — it has no way to know a parent div's CSS class changed, so
+// without this it keeps rendering tiles for the old (pre-toggle) size.
+function InvalidateSizeOnChange({ dep }: { dep: unknown }) {
+  const map = useMap();
+  useEffect(() => {
+    const id = window.setTimeout(() => map.invalidateSize(), 50);
+    return () => window.clearTimeout(id);
+  }, [dep, map]);
+  return null;
+}
+
+function ExpandIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CollapseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M9 3v3a2 2 0 0 1-2 2H4M15 3v3a2 2 0 0 0 2 2h3M21 15h-3a2 2 0 0 0-2 2v3M3 15h3a2 2 0 0 1 2 2v3"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 // Roads/water don't need to catch mouse events (that would steal hover/click
 // from the region polygon underneath), and using a shared Canvas renderer
 // instead of SVG keeps thousands of line/polygon features from turning into
@@ -161,6 +202,8 @@ export default function ArmeniaMap({
   selectedVillageId,
   lang,
   dict,
+  isFullscreen,
+  onToggleFullscreen,
 }: {
   villages: VillageMapItem[];
   regionsGeo: FeatureCollection;
@@ -173,6 +216,8 @@ export default function ArmeniaMap({
   selectedVillageId: string | null;
   lang: Locale;
   dict: Dictionary;
+  isFullscreen: boolean;
+  onToggleFullscreen: () => void;
 }) {
   const knownSlugs = useMemo(() => new Set(villages.map((v) => v.regionSlug)), [villages]);
   const renderer = useMemo(() => L.canvas({ padding: 0.5 }), []);
@@ -231,6 +276,15 @@ export default function ArmeniaMap({
           {hoveredName}
         </div>
       )}
+      <button
+        type="button"
+        onClick={onToggleFullscreen}
+        aria-label={isFullscreen ? dict.fund.collapse_map : dict.fund.expand_map}
+        title={isFullscreen ? dict.fund.collapse_map : dict.fund.expand_map}
+        className="absolute right-3 top-3 z-[1000] flex h-9 w-9 items-center justify-center rounded-lg bg-ink/85 text-on-ink shadow-lg transition-colors hover:bg-ink"
+      >
+        {isFullscreen ? <CollapseIcon className="h-4 w-4" /> : <ExpandIcon className="h-4 w-4" />}
+      </button>
       <MapContainer
         bounds={ARMENIA_BOUNDS}
         maxBounds={ARMENIA_BOUNDS}
@@ -243,6 +297,7 @@ export default function ArmeniaMap({
       <FlyTo focus={focus} />
       <ZoomTracker onZoom={setZoom} />
       <AttributionPrefixFix />
+      <InvalidateSizeOnChange dep={isFullscreen} />
       <GeoJSON
         data={regionsGeo}
         style={styleFor}

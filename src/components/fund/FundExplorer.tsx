@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { FeatureCollection } from "geojson";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -32,6 +32,21 @@ export default function FundExplorer({
 }) {
   const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
   const [selectedVillageId, setSelectedVillageId] = useState<string | null>(null);
+  const [isMapFullscreen, setIsMapFullscreen] = useState(false);
+
+  useEffect(() => {
+    if (!isMapFullscreen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setIsMapFullscreen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMapFullscreen]);
 
   const villages = useMemo(() => regions.flatMap((r) => r.villages), [regions]);
   const regionNameBySlug = useMemo(
@@ -57,7 +72,13 @@ export default function FundExplorer({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-      <div className="h-[420px] overflow-hidden rounded-2xl border border-ink-2 lg:h-[560px]">
+      <div
+        className={
+          isMapFullscreen
+            ? "fixed inset-0 z-50 h-dvh w-dvw overflow-hidden"
+            : "h-[420px] overflow-hidden rounded-2xl border border-ink-2 lg:h-[560px]"
+        }
+      >
         <ArmeniaMap
           villages={villages}
           regionsGeo={regionsGeo}
@@ -70,6 +91,8 @@ export default function FundExplorer({
           selectedVillageId={selectedVillageId}
           lang={lang}
           dict={dict}
+          isFullscreen={isMapFullscreen}
+          onToggleFullscreen={() => setIsMapFullscreen((v) => !v)}
         />
       </div>
       <div>

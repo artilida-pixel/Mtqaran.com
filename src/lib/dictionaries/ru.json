@@ -59,7 +59,9 @@
     "propose_project_text": "Есть идея для вашей деревни — детская площадка, ремонт школы, освещение улицы? Расскажите нам.",
     "search_placeholder": "Поиск деревни…",
     "search_no_results": "Ничего не найдено",
-    "search_more": "и ещё {count}…"
+    "search_more": "и ещё {count}…",
+    "expand_map": "Развернуть карту на весь экран",
+    "collapse_map": "Свернуть карту"
   },
   "village": {
     "back_to_map": "Назад к карте",
