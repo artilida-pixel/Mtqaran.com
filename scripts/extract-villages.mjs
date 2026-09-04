@@ -149,6 +149,46 @@ function slugify(input) {
 
 const ALLOWED_FEATURE_CODES = new Set(["PPL", "PPLA", "PPLA2", "PPLA3", "PPLC", "PPLF", "PPLL"]);
 
+// GeoNames' AM.txt carries a handful of entries that aren't distinct real
+// villages: (a) the same settlement recorded twice under separate geonameids
+// (one with real Armstat population data, a second stale/uncorroborated
+// point with no population — verified individually against Wikipedia,
+// Overpass/OSM and Armstat for every case below, since same-name places a
+// few km apart in Armenia are sometimes genuinely two different villages,
+// e.g. Masis city vs Masis village, and were kept), and (b) two WWII
+// memorial monuments mistagged with a populated-place feature code, sharing
+// exact coordinates with two unrelated real villages (Nor Artagers,
+// Pshatavan) — so the key here includes asciiname, not just lat/lng, or
+// excluding the memorial would have silently deleted those villages too.
+// Dropped by exact source coordinate + name so a re-run from fresh GeoNames
+// data stays clean without needing to redo this research.
+const EXCLUDED_POINTS = new Set(
+  [
+    [40.59168, 44.16949, "Avan"], // dup (Aragatsotn) — no population, ~29km from the real Avan
+    [40.26667, 43.88333, "Karmrashen"], // dup (Aragatsotn)
+    [40.23889, 45.07507, "Sarukhan"], // dup (Gegharkunik) — confirmed via Overpass: only 1 real Sarukhan
+    [40.11676, 45.75541, "Akunk"], // dup (Gegharkunik)
+    [40.11108, 45.12512, "Azat"], // dup (Gegharkunik)
+    [40.37622, 44.94297, "Noratus"], // dup (Gegharkunik)
+    [39.9779, 45.25012, "Tsaghkashen"], // dup (Gegharkunik)
+    [40.07928, 45.50012, "Tsovinar"], // dup (Gegharkunik)
+    [40.04449, 45.23889, "Verin Getashen"], // dup (Gegharkunik)
+    [40.06029, 45.86579, "Vardenis"], // dup (Gegharkunik) — real Vardenis town kept
+    [41.0293, 44.23328, "Lusaghbyur"], // dup (Lori)
+    [40.84719, 44.789, "Tsater"], // dup (Lori)
+    [40.9043, 44.5307, "Vahagni"], // dup (Lori)
+    [40.89346, 45.0537, "Khashtarak"], // dup (Tavush)
+    [40.02228, 45.35553, "Martuni"], // dup #3 (Gegharkunik) — neither the real town nor the real village
+    [40.07233, 45.3139, "Martuni"], // dup #4 (Gegharkunik)
+    [41.15083, 45.14222, "Shavarshavan"], // dup (Tavush) — kept the copy with a real Armenian name
+    [40.86667, 44.96667, "Tandzut"], // dup (Tavush) — kept the copy with a real Armenian name
+    [41.08194, 44.95957, "Gomshavar"], // dup (Tavush) — both copies identical quality, kept the first
+    [40.24731, 45.09589, "Karmir"], // dup (Gegharkunik) — no distinguishing data either side, kept the first
+    [40.06952, 44.00568, "Yerkrord Ashkharhamartum Zohvatsneri"], // WWII memorial, not a village
+    [40.03888, 44.06671, "Yerkrord Ashkharhamartum Zohvatsneri"], // same WWII memorial, second copy
+  ].map(([lat, lng, name]) => `${lat},${lng},${name}`)
+);
+
 const raw = fs.readFileSync(path.join(ROOT, "tmp_data/AM.txt"), "utf8");
 const lines = raw.split("\n").filter(Boolean);
 
@@ -182,6 +222,7 @@ for (const line of lines) {
   const lat = parseFloat(latitude);
   const lng = parseFloat(longitude);
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+  if (EXCLUDED_POINTS.has(`${lat},${lng},${asciiname || name}`)) continue;
 
   const regionSlug = findRegionSlug(lng, lat);
   if (!regionSlug) continue; // outside our 10 marzes (incl. anything outside Armenia's own territory)
