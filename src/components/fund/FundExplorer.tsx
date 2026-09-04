@@ -19,7 +19,6 @@ export default function FundExplorer({
   regions,
   regionsGeo,
   roadsGeo,
-  riversGeo,
   waterGeo,
   lang,
   dict,
@@ -27,7 +26,6 @@ export default function FundExplorer({
   regions: RegionListItem[];
   regionsGeo: FeatureCollection;
   roadsGeo: FeatureCollection;
-  riversGeo: FeatureCollection;
   waterGeo: FeatureCollection;
   lang: Locale;
   dict: Dictionary;
@@ -64,7 +62,6 @@ export default function FundExplorer({
           villages={villages}
           regionsGeo={regionsGeo}
           roadsGeo={roadsGeo}
-          riversGeo={riversGeo}
           waterGeo={waterGeo}
           regionNameBySlug={regionNameBySlug}
           activeRegionSlug={expandedSlug}

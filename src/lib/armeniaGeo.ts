@@ -19,17 +19,15 @@ export function getArmeniaRegionsGeoJson(): FeatureCollection {
   return loadGeoJson("armenia-regions.geojson");
 }
 
-// Roads (trunk/primary/secondary), rivers and standing water, sourced from
+// Roads (trunk/primary/secondary) and standing water, sourced from
 // OpenStreetMap via the Overpass API and clipped to Armenia's own admin
 // boundary (not a bounding box, so no neighboring-country data leaks in).
 // Geometry is simplified (~150m tolerance) to keep the map smooth with a
-// few thousand features on top of everything else it already renders.
+// few thousand features on top of everything else it already renders. Water
+// is trimmed to Lake Sevan only — the smaller reservoirs/ponds cluttered the
+// map without adding much at this zoom range.
 export function getArmeniaRoadsGeoJson(): FeatureCollection {
   return loadGeoJson("armenia-roads.geojson");
-}
-
-export function getArmeniaRiversGeoJson(): FeatureCollection {
-  return loadGeoJson("armenia-rivers.geojson");
 }
 
 export function getArmeniaWaterGeoJson(): FeatureCollection {

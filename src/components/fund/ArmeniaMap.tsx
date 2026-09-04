@@ -131,10 +131,10 @@ function AttributionPrefixFix() {
   return null;
 }
 
-// Roads/rivers/water don't need to catch mouse events (that would steal
-// hover/click from the region polygon underneath), and using a shared
-// Canvas renderer instead of SVG keeps ~14,000 line/polygon features from
-// turning into that many individual DOM nodes.
+// Roads/water don't need to catch mouse events (that would steal hover/click
+// from the region polygon underneath), and using a shared Canvas renderer
+// instead of SVG keeps thousands of line/polygon features from turning into
+// that many individual DOM nodes.
 const ROAD_STYLE: Record<string, L.PathOptions> = {
   trunk: { color: "rgba(247,239,228,0.55)", weight: 2 },
   primary: { color: "rgba(247,239,228,0.45)", weight: 1.5 },
@@ -142,7 +142,6 @@ const ROAD_STYLE: Record<string, L.PathOptions> = {
 };
 const ROAD_STYLE_DEFAULT: L.PathOptions = { color: "rgba(247,239,228,0.25)", weight: 1 };
 
-const RIVER_STYLE: L.PathOptions = { color: "#4a90d9", weight: 1.2, opacity: 0.6 };
 const WATER_STYLE: L.PathOptions = {
   color: "#4a90d9",
   weight: 1,
@@ -154,7 +153,6 @@ export default function ArmeniaMap({
   villages,
   regionsGeo,
   roadsGeo,
-  riversGeo,
   waterGeo,
   regionNameBySlug,
   activeRegionSlug,
@@ -167,7 +165,6 @@ export default function ArmeniaMap({
   villages: VillageMapItem[];
   regionsGeo: FeatureCollection;
   roadsGeo: FeatureCollection;
-  riversGeo: FeatureCollection;
   waterGeo: FeatureCollection;
   regionNameBySlug: Map<string, string>;
   activeRegionSlug: string | null;
@@ -225,7 +222,6 @@ export default function ArmeniaMap({
     },
     [renderer]
   );
-  const riverStyle = useCallback((): L.PathOptions => ({ ...RIVER_STYLE, renderer, interactive: false }), [renderer]);
   const waterStyle = useCallback((): L.PathOptions => ({ ...WATER_STYLE, renderer, interactive: false }), [renderer]);
 
   return (
@@ -261,7 +257,6 @@ export default function ArmeniaMap({
       />
       <GeoJSON data={waterGeo} style={waterStyle} attribution="&copy; OpenStreetMap contributors" />
       <GeoJSON data={roadsGeo} style={roadStyle} />
-      <GeoJSON data={riversGeo} style={riverStyle} />
       <MarkerClusterGroup
         ref={clusterRef}
         chunkedLoading
