@@ -9027,7 +9027,8 @@
     "nameEn": "Agarakadzor",
     "lat": 39.73608,
     "lng": 45.35553,
-    "population": 1343
+    "population": 1343,
+    "coverImage": "/villages/agarakadzor-vayots-dzor.jpg"
   },
   {
     "slug": "aghavnadzor-vayots-dzor",
@@ -9037,7 +9038,8 @@
     "nameEn": "Aghavnadzor",
     "lat": 39.78197,
     "lng": 45.22708,
-    "population": 1986
+    "population": 1986,
+    "coverImage": "/villages/aghavnadzor-vayots-dzor.jpg"
   },
   {
     "slug": "aghnjadzor-vayots-dzor",
@@ -9047,7 +9049,8 @@
     "nameEn": "Aghnjadzor",
     "lat": 39.90008,
     "lng": 45.25012,
-    "population": 408
+    "population": 408,
+    "coverImage": "/villages/aghnjadzor-vayots-dzor.jpg"
   },
   {
     "slug": "akhta-vayots-dzor",
@@ -9057,7 +9060,8 @@
     "nameEn": "Akhta",
     "lat": 39.6470238,
     "lng": 45.5633115,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/akhta-vayots-dzor.jpg"
   },
   {
     "slug": "amaghu-vayots-dzor",
@@ -9067,7 +9071,8 @@
     "nameEn": "Amaghu",
     "lat": 39.6837925,
     "lng": 45.213491,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/amaghu-vayots-dzor.jpg"
   },
   {
     "slug": "arates-vayots-dzor",
@@ -9077,7 +9082,8 @@
     "nameEn": "Arates",
     "lat": 39.9057,
     "lng": 45.44171,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/arates-vayots-dzor.jpg"
   },
   {
     "slug": "areni-vayots-dzor",
@@ -9087,7 +9093,8 @@
     "nameEn": "Areni",
     "lat": 39.72205,
     "lng": 45.18392,
-    "population": 1997
+    "population": 1997,
+    "coverImage": "/villages/areni-vayots-dzor.jpg"
   },
   {
     "slug": "arin-vayots-dzor",
@@ -9097,7 +9104,8 @@
     "nameEn": "Arin",
     "lat": 39.7279,
     "lng": 45.49451,
-    "population": 264
+    "population": 264,
+    "coverImage": "/villages/arin-vayots-dzor.jpg"
   },
   {
     "slug": "arpi-vayots-dzor",
@@ -9107,7 +9115,8 @@
     "nameEn": "Arpi",
     "lat": 39.73889,
     "lng": 45.26672,
-    "population": 1161
+    "population": 1161,
+    "coverImage": "/villages/arpi-vayots-dzor.jpg"
   },
   {
     "slug": "artabuynk-vayots-dzor",
@@ -9117,7 +9126,8 @@
     "nameEn": "Artabuynk",
     "lat": 39.8667,
     "lng": 45.32788,
-    "population": 755
+    "population": 755,
+    "coverImage": "/villages/artabuynk-vayots-dzor.jpg"
   },
   {
     "slug": "artavan-vayots-dzor",
@@ -9127,7 +9137,8 @@
     "nameEn": "Artavan",
     "lat": 39.65832,
     "lng": 45.6167,
-    "population": 247
+    "population": 247,
+    "coverImage": "/villages/artavan-vayots-dzor.jpg"
   },
   {
     "slug": "azatek-vayots-dzor",
@@ -9137,7 +9148,8 @@
     "nameEn": "Azatek",
     "lat": 39.65008,
     "lng": 45.4389,
-    "population": 528
+    "population": 528,
+    "coverImage": "/villages/azatek-vayots-dzor.jpg"
   },
   {
     "slug": "bardzruni-vayots-dzor",
@@ -9147,7 +9159,8 @@
     "nameEn": "Bardzruni",
     "lat": 39.51947,
     "lng": 45.48328,
-    "population": 351
+    "population": 351,
+    "coverImage": "/villages/bardzruni-vayots-dzor.jpg"
   },
   {
     "slug": "chiva-vayots-dzor",
@@ -9157,7 +9170,8 @@
     "nameEn": "Chiva",
     "lat": 39.76672,
     "lng": 45.13611,
-    "population": 805
+    "population": 805,
+    "coverImage": "/villages/chiva-vayots-dzor.jpg"
   },
   {
     "slug": "getap-vayots-dzor",
@@ -9167,7 +9181,8 @@
     "nameEn": "Getap",
     "lat": 39.76392,
     "lng": 45.30829,
-    "population": 2373
+    "population": 2373,
+    "coverImage": "/villages/getap-vayots-dzor.jpg"
   },
   {
     "slug": "getikvank-vayots-dzor",
@@ -9177,7 +9192,8 @@
     "nameEn": "Getikvank",
     "lat": 39.94907,
     "lng": 45.50358,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/getikvank-vayots-dzor.jpg"
   },
   {
     "slug": "gladzor-vayots-dzor",
@@ -9187,7 +9203,8 @@
     "nameEn": "Gladzor",
     "lat": 39.7807,
     "lng": 45.34729,
-    "population": 2524
+    "population": 2524,
+    "coverImage": "/villages/gladzor-vayots-dzor.jpg"
   },
   {
     "slug": "gndevaz-vayots-dzor",
@@ -9197,7 +9214,8 @@
     "nameEn": "Gndevaz",
     "lat": 39.76111,
     "lng": 45.62231,
-    "population": 751
+    "population": 751,
+    "coverImage": "/villages/gndevaz-vayots-dzor.jpg"
   },
   {
     "slug": "gnishik-vayots-dzor",
@@ -9207,7 +9225,8 @@
     "nameEn": "Gnishik",
     "lat": 39.65832,
     "lng": 45.2973,
-    "population": 62
+    "population": 62,
+    "coverImage": "/villages/gnishik-vayots-dzor.jpg"
   },
   {
     "slug": "goghtanik-vayots-dzor",
@@ -9217,7 +9236,8 @@
     "nameEn": "Goghtanik",
     "lat": 39.87793,
     "lng": 45.46112,
-    "population": 79
+    "population": 79,
+    "coverImage": "/villages/goghtanik-vayots-dzor.jpg"
   },
   {
     "slug": "gomk-vayots-dzor",
@@ -9227,7 +9247,8 @@
     "nameEn": "Gomk",
     "lat": 39.63068,
     "lng": 45.57233,
-    "population": 168
+    "population": 168,
+    "coverImage": "/villages/gomk-vayots-dzor.jpg"
   },
   {
     "slug": "herher-vayots-dzor",
@@ -9237,7 +9258,8 @@
     "nameEn": "Herher",
     "lat": 39.77508,
     "lng": 45.54169,
-    "population": 589
+    "population": 589,
+    "coverImage": "/villages/herher-vayots-dzor.jpg"
   },
   {
     "slug": "hermon-vayots-dzor",
@@ -9247,7 +9269,8 @@
     "nameEn": "Hermon",
     "lat": 39.87512,
     "lng": 45.42792,
-    "population": 163
+    "population": 163,
+    "coverImage": "/villages/hermon-vayots-dzor.jpg"
   },
   {
     "slug": "horadis-vayots-dzor",
@@ -9257,7 +9280,8 @@
     "nameEn": "Horadis",
     "lat": 39.6221126,
     "lng": 45.3758086,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/horadis-vayots-dzor.jpg"
   },
   {
     "slug": "horbategh-vayots-dzor",
@@ -9267,7 +9291,8 @@
     "nameEn": "Horbategh",
     "lat": 39.89358,
     "lng": 45.33594,
-    "population": 223
+    "population": 223,
+    "coverImage": "/villages/horbategh-vayots-dzor.jpg"
   },
   {
     "slug": "hors-vayots-dzor",
@@ -9277,7 +9302,8 @@
     "nameEn": "Hors",
     "lat": 39.86389,
     "lng": 45.23328,
-    "population": 237
+    "population": 237,
+    "coverImage": "/villages/hors-vayots-dzor.jpg"
   },
   {
     "slug": "kalasar-vayots-dzor",
@@ -9287,7 +9313,8 @@
     "nameEn": "Kalasar",
     "lat": 39.8825739,
     "lng": 45.4206799,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/kalasar-vayots-dzor.jpg"
   },
   {
     "slug": "kapuyt-vayots-dzor",
@@ -9297,7 +9324,8 @@
     "nameEn": "Kapuyt",
     "lat": 39.62444,
     "lng": 45.5925,
-    "population": 32
+    "population": 32,
+    "coverImage": "/villages/kapuyt-vayots-dzor.jpg"
   },
   {
     "slug": "karaglukh-vayots-dzor",
@@ -9307,7 +9335,8 @@
     "nameEn": "Karaglukh",
     "lat": 39.89305,
     "lng": 45.26761,
-    "population": 767
+    "population": 767,
+    "coverImage": "/villages/karaglukh-vayots-dzor.jpg"
   },
   {
     "slug": "karmrashen-vayots-dzor",
@@ -9317,7 +9346,8 @@
     "nameEn": "Karmrashen",
     "lat": 39.81582,
     "lng": 45.53309,
-    "population": 136
+    "population": 136,
+    "coverImage": "/villages/karmrashen-vayots-dzor.jpg"
   },
   {
     "slug": "kechut-vayots-dzor",
@@ -9327,7 +9357,8 @@
     "nameEn": "Kechut",
     "lat": 39.80427,
     "lng": 45.67072,
-    "population": 934
+    "population": 934,
+    "coverImage": "/villages/kechut-vayots-dzor.jpg"
   },
   {
     "slug": "khachik-vayots-dzor",
@@ -9337,7 +9368,8 @@
     "nameEn": "Khachik",
     "lat": 39.62196,
     "lng": 45.20837,
-    "population": 996
+    "population": 996,
+    "coverImage": "/villages/khachik-vayots-dzor.jpg"
   },
   {
     "slug": "khndzorut-vayots-dzor",
@@ -9347,7 +9379,8 @@
     "nameEn": "Khndzorut",
     "lat": 39.55322,
     "lng": 45.40518,
-    "population": 504
+    "population": 504,
+    "coverImage": "/villages/khndzorut-vayots-dzor.jpg"
   },
   {
     "slug": "malishka-vayots-dzor",
@@ -9357,7 +9390,8 @@
     "nameEn": "Malishka",
     "lat": 39.73787,
     "lng": 45.39058,
-    "population": 4585
+    "population": 4585,
+    "coverImage": "/villages/malishka-vayots-dzor.jpg"
   },
   {
     "slug": "martiros-vayots-dzor",
@@ -9367,7 +9401,8 @@
     "nameEn": "Martiros",
     "lat": 39.59729,
     "lng": 45.51392,
-    "population": 472
+    "population": 472,
+    "coverImage": "/villages/martiros-vayots-dzor.jpg"
   },
   {
     "slug": "mozrov-vayots-dzor",
@@ -9377,7 +9412,8 @@
     "nameEn": "Mozrov",
     "lat": 39.70831,
     "lng": 45.28748,
-    "population": 73
+    "population": 73,
+    "coverImage": "/villages/mozrov-vayots-dzor.jpg"
   },
   {
     "slug": "nor-aznaberd-vayots-dzor",
@@ -9387,7 +9423,8 @@
     "nameEn": "Nor Aznaberd",
     "lat": 39.54449,
     "lng": 45.4223,
-    "population": 106
+    "population": 106,
+    "coverImage": "/villages/nor-aznaberd-vayots-dzor.jpg"
   },
   {
     "slug": "por-vayots-dzor",
@@ -9397,7 +9434,8 @@
     "nameEn": "Por",
     "lat": 39.64447,
     "lng": 45.47229,
-    "population": 102
+    "population": 102,
+    "coverImage": "/villages/por-vayots-dzor.jpg"
   },
   {
     "slug": "rind-vayots-dzor",
@@ -9407,7 +9445,8 @@
     "nameEn": "Rind",
     "lat": 39.76111,
     "lng": 45.17792,
-    "population": 1510
+    "population": 1510,
+    "coverImage": "/villages/rind-vayots-dzor.jpg"
   },
   {
     "slug": "salli-vayots-dzor",
@@ -9417,7 +9456,8 @@
     "nameEn": "Salli",
     "lat": 39.87372,
     "lng": 45.27789,
-    "population": 224
+    "population": 224,
+    "coverImage": "/villages/salli-vayots-dzor.jpg"
   },
   {
     "slug": "saravan-vayots-dzor",
@@ -9427,7 +9467,8 @@
     "nameEn": "Saravan",
     "lat": 39.71948,
     "lng": 45.65008,
-    "population": 160
+    "population": 160,
+    "coverImage": "/villages/saravan-vayots-dzor.jpg"
   },
   {
     "slug": "sers-vayots-dzor",
@@ -9437,7 +9478,8 @@
     "nameEn": "Sers",
     "lat": 39.5639,
     "lng": 45.48053,
-    "population": 193
+    "population": 193,
+    "coverImage": "/villages/sers-vayots-dzor.jpg"
   },
   {
     "slug": "sevazhayr-vayots-dzor",
@@ -9447,7 +9489,8 @@
     "nameEn": "Sevazhayr",
     "lat": 39.91388,
     "lng": 45.4779,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/sevazhayr-vayots-dzor.jpg"
   },
   {
     "slug": "shatin-vayots-dzor",
@@ -9457,7 +9500,8 @@
     "nameEn": "Shatin",
     "lat": 39.83612,
     "lng": 45.30292,
-    "population": 1734
+    "population": 1734,
+    "coverImage": "/villages/shatin-vayots-dzor.jpg"
   },
   {
     "slug": "taratumb-vayots-dzor",
@@ -9467,7 +9511,8 @@
     "nameEn": "Taratumb",
     "lat": 39.89171,
     "lng": 45.25567,
-    "population": 475
+    "population": 475,
+    "coverImage": "/villages/taratumb-vayots-dzor.jpg"
   },
   {
     "slug": "ughedzor-vayots-dzor",
@@ -9477,7 +9522,8 @@
     "nameEn": "Ughedzor",
     "lat": 39.73889,
     "lng": 45.68048,
-    "population": null
+    "population": null,
+    "coverImage": "/villages/ughedzor-vayots-dzor.jpg"
   },
   {
     "slug": "vardahovit-vayots-dzor",
@@ -9487,7 +9533,8 @@
     "nameEn": "Vardahovit",
     "lat": 39.90008,
     "lng": 45.48328,
-    "population": 235
+    "population": 235,
+    "coverImage": "/villages/vardahovit-vayots-dzor.jpg"
   },
   {
     "slug": "vernashen-vayots-dzor",
@@ -9497,7 +9544,8 @@
     "nameEn": "Vernashen",
     "lat": 39.79236,
     "lng": 45.36389,
-    "population": 1171
+    "population": 1171,
+    "coverImage": "/villages/vernashen-vayots-dzor.jpg"
   },
   {
     "slug": "yeghegis-vayots-dzor",
@@ -9507,7 +9555,8 @@
     "nameEn": "Yeghegis",
     "lat": 39.8723,
     "lng": 45.3575,
-    "population": 359
+    "population": 359,
+    "coverImage": "/villages/yeghegis-vayots-dzor.jpg"
   },
   {
     "slug": "yelpin-vayots-dzor",
@@ -9517,7 +9566,8 @@
     "nameEn": "Yelpin",
     "lat": 39.80832,
     "lng": 45.10985,
-    "population": 1246
+    "population": 1246,
+    "coverImage": "/villages/yelpin-vayots-dzor.jpg"
   },
   {
     "slug": "zaritap-vayots-dzor",
@@ -9527,7 +9577,8 @@
     "nameEn": "Zaritap",
     "lat": 39.63892,
     "lng": 45.51111,
-    "population": 1386
+    "population": 1386,
+    "coverImage": "/villages/zaritap-vayots-dzor.jpg"
   },
   {
     "slug": "zedea-vayots-dzor",
@@ -9537,6 +9588,7 @@
     "nameEn": "Zedea",
     "lat": 39.68048,
     "lng": 45.39447,
-    "population": 132
+    "population": 132,
+    "coverImage": "/villages/zedea-vayots-dzor.jpg"
   }
 ]

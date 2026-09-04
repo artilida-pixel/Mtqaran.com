@@ -39,7 +39,16 @@ export default async function VillagePage({
       </Link>
 
       <div className="mt-4">
-        <VillageSignBanner nameHy={village.nameHy} nameEn={village.nameEn} />
+        {village.coverImage ? (
+          // eslint-disable-next-line @next/next/no-img-element -- local static asset, pre-compressed at import time
+          <img
+            src={village.coverImage}
+            alt={village.nameEn}
+            className="aspect-[21/9] w-full rounded-2xl object-cover sm:aspect-[3/1]"
+          />
+        ) : (
+          <VillageSignBanner nameHy={village.nameHy} nameEn={village.nameEn} />
+        )}
       </div>
 
       <div className="mt-6">

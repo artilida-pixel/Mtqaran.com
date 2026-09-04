@@ -89,6 +89,7 @@ async function main() {
       lat: number;
       lng: number;
       population: number | null;
+      coverImage?: string;
     }[]
   )
     .filter((v) => regionBySlug.has(v.regionSlug))
@@ -102,6 +103,7 @@ async function main() {
       lat: v.lat,
       lng: v.lng,
       population: v.population,
+      coverImage: v.coverImage ?? null,
       workoutStatus: "proposed",
     }));
 
