@@ -399,6 +399,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Region: 'Region',
   Village: 'Village',
+  VillagePhoto: 'VillagePhoto',
   Project: 'Project',
   Lecturer: 'Lecturer',
   Lecture: 'Lecture'
@@ -417,7 +418,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "region" | "village" | "project" | "lecturer" | "lecture"
+    modelProps: "region" | "village" | "villagePhoto" | "project" | "lecturer" | "lecture"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +567,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.VillageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.VillageCountAggregateOutputType> | number
+        }
+      }
+    }
+    VillagePhoto: {
+      payload: Prisma.$VillagePhotoPayload<ExtArgs>
+      fields: Prisma.VillagePhotoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VillagePhotoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VillagePhotoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        findFirst: {
+          args: Prisma.VillagePhotoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VillagePhotoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        findMany: {
+          args: Prisma.VillagePhotoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>[]
+        }
+        create: {
+          args: Prisma.VillagePhotoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        createMany: {
+          args: Prisma.VillagePhotoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VillagePhotoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>[]
+        }
+        delete: {
+          args: Prisma.VillagePhotoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        update: {
+          args: Prisma.VillagePhotoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        deleteMany: {
+          args: Prisma.VillagePhotoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VillagePhotoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VillagePhotoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>[]
+        }
+        upsert: {
+          args: Prisma.VillagePhotoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VillagePhotoPayload>
+        }
+        aggregate: {
+          args: Prisma.VillagePhotoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVillagePhoto>
+        }
+        groupBy: {
+          args: Prisma.VillagePhotoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VillagePhotoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VillagePhotoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VillagePhotoCountAggregateOutputType> | number
         }
       }
     }
@@ -864,6 +939,21 @@ export const VillageScalarFieldEnum = {
 export type VillageScalarFieldEnum = (typeof VillageScalarFieldEnum)[keyof typeof VillageScalarFieldEnum]
 
 
+export const VillagePhotoScalarFieldEnum = {
+  id: 'id',
+  villageId: 'villageId',
+  imageData: 'imageData',
+  mimeType: 'mimeType',
+  caption: 'caption',
+  submittedBy: 'submittedBy',
+  contact: 'contact',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type VillagePhotoScalarFieldEnum = (typeof VillagePhotoScalarFieldEnum)[keyof typeof VillagePhotoScalarFieldEnum]
+
+
 export const ProjectScalarFieldEnum = {
   id: 'id',
   villageId: 'villageId',
@@ -1009,6 +1099,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Bytes'
+ */
+export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+/**
+ * Reference to a field of type 'Bytes[]'
+ */
+export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
     
 
 
@@ -1171,6 +1275,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   region?: Prisma.RegionOmit
   village?: Prisma.VillageOmit
+  villagePhoto?: Prisma.VillagePhotoOmit
   project?: Prisma.ProjectOmit
   lecturer?: Prisma.LecturerOmit
   lecture?: Prisma.LectureOmit

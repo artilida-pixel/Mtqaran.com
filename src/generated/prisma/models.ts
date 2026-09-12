@@ -10,6 +10,7 @@
  */
 export type * from './models/Region'
 export type * from './models/Village'
+export type * from './models/VillagePhoto'
 export type * from './models/Project'
 export type * from './models/Lecturer'
 export type * from './models/Lecture'

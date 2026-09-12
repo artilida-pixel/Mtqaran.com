@@ -41,8 +41,25 @@ model Village {
   workoutStatus String   @default("proposed") // proposed | funding | building | completed
   createdAt     DateTime @default(now())
   projects      Project[]
+  photos        VillagePhoto[]
 
   @@index([regionId])
+}
+
+model VillagePhoto {
+  id          String   @id @default(cuid())
+  villageId   String
+  village     Village  @relation(fields: [villageId], references: [id], onDelete: Cascade)
+  imageData   Bytes
+  mimeType    String   @default("image/jpeg")
+  caption     String?
+  submittedBy String?
+  contact     String?
+  status      String   @default("pending") // pending | approved | rejected
+  createdAt   DateTime @default(now())
+
+  @@index([villageId])
+  @@index([status])
 }
 
 model Project {

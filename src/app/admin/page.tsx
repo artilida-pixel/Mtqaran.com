@@ -10,18 +10,28 @@ type AdminProject = {
   village: { nameRu: string };
 };
 
+type AdminPhoto = {
+  id: string;
+  caption: string | null;
+  submittedBy: string | null;
+  contact: string | null;
+  village: { nameRu: string };
+};
+
 export default function AdminPage() {
   const [authorized, setAuthorized] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState<string | null>(null);
   const [pending, setPending] = useState<AdminProject[]>([]);
   const [active, setActive] = useState<AdminProject[]>([]);
+  const [pendingPhotos, setPendingPhotos] = useState<AdminPhoto[]>([]);
   const [busyId, setBusyId] = useState<string | null>(null);
 
   async function loadAll() {
-    const [pendingRes, activeRes] = await Promise.all([
+    const [pendingRes, activeRes, pendingPhotosRes] = await Promise.all([
       fetch("/api/admin/pending"),
       fetch("/api/admin/active"),
+      fetch("/api/admin/pending-photos"),
     ]);
     if (pendingRes.status === 401) {
       setAuthorized(false);
@@ -30,6 +40,7 @@ export default function AdminPage() {
     setAuthorized(true);
     setPending(await pendingRes.json());
     setActive(activeRes.ok ? await activeRes.json() : []);
+    setPendingPhotos(pendingPhotosRes.ok ? await pendingPhotosRes.json() : []);
   }
 
   useEffect(() => {
@@ -59,6 +70,13 @@ export default function AdminPage() {
     setPending((prev) => prev.filter((p) => p.id !== id));
     setBusyId(null);
     await loadAll();
+  }
+
+  async function moderatePhoto(id: string, action: "approve" | "reject") {
+    setBusyId(id);
+    await fetch(`/api/admin/village-photos/${id}/${action}`, { method: "POST" });
+    setPendingPhotos((prev) => prev.filter((p) => p.id !== id));
+    setBusyId(null);
   }
 
   async function updateRaised(id: string, raisedAmount: number) {
@@ -126,6 +144,48 @@ export default function AdminPage() {
                 >
                   Отклонить
                 </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-lg font-semibold">Модерация фото сёл ({pendingPhotos.length})</h2>
+        {pendingPhotos.length === 0 && <div className="text-sm text-neutral-500">Новых фото нет.</div>}
+        <div className="space-y-3">
+          {pendingPhotos.map((p) => (
+            <div key={p.id} className="flex gap-3 rounded-xl border border-neutral-200 p-4">
+              {/* eslint-disable-next-line @next/next/no-img-element -- admin-only preview of a pending upload */}
+              <img
+                src={`/api/village-photos/${p.id}/image`}
+                alt=""
+                className="h-24 w-24 shrink-0 rounded-lg object-cover"
+              />
+              <div className="min-w-0 flex-1">
+                <div className="font-medium">{p.village.nameRu}</div>
+                {p.caption && <div className="text-sm text-neutral-700">{p.caption}</div>}
+                {(p.submittedBy || p.contact) && (
+                  <div className="text-xs text-neutral-500">
+                    {[p.submittedBy, p.contact].filter(Boolean).join(" · ")}
+                  </div>
+                )}
+                <div className="mt-3 flex gap-2">
+                  <button
+                    disabled={busyId === p.id}
+                    onClick={() => moderatePhoto(p.id, "approve")}
+                    className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700 disabled:opacity-60"
+                  >
+                    Одобрить
+                  </button>
+                  <button
+                    disabled={busyId === p.id}
+                    onClick={() => moderatePhoto(p.id, "reject")}
+                    className="rounded-lg bg-red-100 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-200 disabled:opacity-60"
+                  >
+                    Отклонить
+                  </button>
+                </div>
               </div>
             </div>
           ))}

@@ -85,6 +85,21 @@
       "submit": "Submit for review",
       "success": "Thank you! The project was submitted and will appear after admin review.",
       "error": "Could not submit. Please check the fields and try again."
+    },
+    "photos_title": "Photos from residents",
+    "photos_empty": "No photos of this village yet — be the first to add one!",
+    "add_photo_button": "Add a photo",
+    "photo_form": {
+      "file": "Photo",
+      "caption": "What's in the photo",
+      "caption_placeholder": "E.g.: The TUMO Box in our village",
+      "name": "Your name (optional)",
+      "contact": "Contact (optional)",
+      "submit": "Submit for review",
+      "success": "Thank you! The photo was submitted and will appear after admin review.",
+      "error": "Could not submit. Please check the file and try again.",
+      "file_too_large": "File is too large (max 8MB).",
+      "select_file_first": "Please choose a photo first."
     }
   },
   "footer": {

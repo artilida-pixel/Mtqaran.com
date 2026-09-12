@@ -52,6 +52,11 @@ export type Region = Prisma.RegionModel
  */
 export type Village = Prisma.VillageModel
 /**
+ * Model VillagePhoto
+ * 
+ */
+export type VillagePhoto = Prisma.VillagePhotoModel
+/**
  * Model Project
  * 
  */

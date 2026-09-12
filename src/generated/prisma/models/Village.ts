@@ -306,6 +306,7 @@ export type VillageWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   region?: Prisma.XOR<Prisma.RegionScalarRelationFilter, Prisma.RegionWhereInput>
   projects?: Prisma.ProjectListRelationFilter
+  photos?: Prisma.VillagePhotoListRelationFilter
 }
 
 export type VillageOrderByWithRelationInput = {
@@ -326,6 +327,7 @@ export type VillageOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   region?: Prisma.RegionOrderByWithRelationInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
+  photos?: Prisma.VillagePhotoOrderByRelationAggregateInput
 }
 
 export type VillageWhereUniqueInput = Prisma.AtLeast<{
@@ -349,6 +351,7 @@ export type VillageWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   region?: Prisma.XOR<Prisma.RegionScalarRelationFilter, Prisma.RegionWhereInput>
   projects?: Prisma.ProjectListRelationFilter
+  photos?: Prisma.VillagePhotoListRelationFilter
 }, "id" | "slug">
 
 export type VillageOrderByWithAggregationInput = {
@@ -412,6 +415,7 @@ export type VillageCreateInput = {
   createdAt?: Date | string
   region: Prisma.RegionCreateNestedOneWithoutVillagesInput
   projects?: Prisma.ProjectCreateNestedManyWithoutVillageInput
+  photos?: Prisma.VillagePhotoCreateNestedManyWithoutVillageInput
 }
 
 export type VillageUncheckedCreateInput = {
@@ -431,6 +435,7 @@ export type VillageUncheckedCreateInput = {
   workoutStatus?: string
   createdAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutVillageInput
+  photos?: Prisma.VillagePhotoUncheckedCreateNestedManyWithoutVillageInput
 }
 
 export type VillageUpdateInput = {
@@ -450,6 +455,7 @@ export type VillageUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   region?: Prisma.RegionUpdateOneRequiredWithoutVillagesNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutVillageNestedInput
+  photos?: Prisma.VillagePhotoUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageUncheckedUpdateInput = {
@@ -469,6 +475,7 @@ export type VillageUncheckedUpdateInput = {
   workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutVillageNestedInput
+  photos?: Prisma.VillagePhotoUncheckedUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageCreateManyInput = {
@@ -663,6 +670,20 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type VillageCreateNestedOneWithoutPhotosInput = {
+  create?: Prisma.XOR<Prisma.VillageCreateWithoutPhotosInput, Prisma.VillageUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.VillageCreateOrConnectWithoutPhotosInput
+  connect?: Prisma.VillageWhereUniqueInput
+}
+
+export type VillageUpdateOneRequiredWithoutPhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.VillageCreateWithoutPhotosInput, Prisma.VillageUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.VillageCreateOrConnectWithoutPhotosInput
+  upsert?: Prisma.VillageUpsertWithoutPhotosInput
+  connect?: Prisma.VillageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VillageUpdateToOneWithWhereWithoutPhotosInput, Prisma.VillageUpdateWithoutPhotosInput>, Prisma.VillageUncheckedUpdateWithoutPhotosInput>
+}
+
 export type VillageCreateNestedOneWithoutProjectsInput = {
   create?: Prisma.XOR<Prisma.VillageCreateWithoutProjectsInput, Prisma.VillageUncheckedCreateWithoutProjectsInput>
   connectOrCreate?: Prisma.VillageCreateOrConnectWithoutProjectsInput
@@ -693,6 +714,7 @@ export type VillageCreateWithoutRegionInput = {
   workoutStatus?: string
   createdAt?: Date | string
   projects?: Prisma.ProjectCreateNestedManyWithoutVillageInput
+  photos?: Prisma.VillagePhotoCreateNestedManyWithoutVillageInput
 }
 
 export type VillageUncheckedCreateWithoutRegionInput = {
@@ -711,6 +733,7 @@ export type VillageUncheckedCreateWithoutRegionInput = {
   workoutStatus?: string
   createdAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutVillageInput
+  photos?: Prisma.VillagePhotoUncheckedCreateNestedManyWithoutVillageInput
 }
 
 export type VillageCreateOrConnectWithoutRegionInput = {
@@ -760,6 +783,98 @@ export type VillageScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
 }
 
+export type VillageCreateWithoutPhotosInput = {
+  id?: string
+  slug: string
+  nameHy: string
+  nameRu: string
+  nameEn: string
+  lat: number
+  lng: number
+  population?: number | null
+  descriptionHy?: string | null
+  descriptionRu?: string | null
+  descriptionEn?: string | null
+  coverImage?: string | null
+  workoutStatus?: string
+  createdAt?: Date | string
+  region: Prisma.RegionCreateNestedOneWithoutVillagesInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutVillageInput
+}
+
+export type VillageUncheckedCreateWithoutPhotosInput = {
+  id?: string
+  slug: string
+  regionId: string
+  nameHy: string
+  nameRu: string
+  nameEn: string
+  lat: number
+  lng: number
+  population?: number | null
+  descriptionHy?: string | null
+  descriptionRu?: string | null
+  descriptionEn?: string | null
+  coverImage?: string | null
+  workoutStatus?: string
+  createdAt?: Date | string
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutVillageInput
+}
+
+export type VillageCreateOrConnectWithoutPhotosInput = {
+  where: Prisma.VillageWhereUniqueInput
+  create: Prisma.XOR<Prisma.VillageCreateWithoutPhotosInput, Prisma.VillageUncheckedCreateWithoutPhotosInput>
+}
+
+export type VillageUpsertWithoutPhotosInput = {
+  update: Prisma.XOR<Prisma.VillageUpdateWithoutPhotosInput, Prisma.VillageUncheckedUpdateWithoutPhotosInput>
+  create: Prisma.XOR<Prisma.VillageCreateWithoutPhotosInput, Prisma.VillageUncheckedCreateWithoutPhotosInput>
+  where?: Prisma.VillageWhereInput
+}
+
+export type VillageUpdateToOneWithWhereWithoutPhotosInput = {
+  where?: Prisma.VillageWhereInput
+  data: Prisma.XOR<Prisma.VillageUpdateWithoutPhotosInput, Prisma.VillageUncheckedUpdateWithoutPhotosInput>
+}
+
+export type VillageUpdateWithoutPhotosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  nameHy?: Prisma.StringFieldUpdateOperationsInput | string
+  nameRu?: Prisma.StringFieldUpdateOperationsInput | string
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lng?: Prisma.FloatFieldUpdateOperationsInput | number
+  population?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  descriptionHy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  region?: Prisma.RegionUpdateOneRequiredWithoutVillagesNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutVillageNestedInput
+}
+
+export type VillageUncheckedUpdateWithoutPhotosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  regionId?: Prisma.StringFieldUpdateOperationsInput | string
+  nameHy?: Prisma.StringFieldUpdateOperationsInput | string
+  nameRu?: Prisma.StringFieldUpdateOperationsInput | string
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lng?: Prisma.FloatFieldUpdateOperationsInput | number
+  population?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  descriptionHy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutVillageNestedInput
+}
+
 export type VillageCreateWithoutProjectsInput = {
   id?: string
   slug: string
@@ -776,6 +891,7 @@ export type VillageCreateWithoutProjectsInput = {
   workoutStatus?: string
   createdAt?: Date | string
   region: Prisma.RegionCreateNestedOneWithoutVillagesInput
+  photos?: Prisma.VillagePhotoCreateNestedManyWithoutVillageInput
 }
 
 export type VillageUncheckedCreateWithoutProjectsInput = {
@@ -794,6 +910,7 @@ export type VillageUncheckedCreateWithoutProjectsInput = {
   coverImage?: string | null
   workoutStatus?: string
   createdAt?: Date | string
+  photos?: Prisma.VillagePhotoUncheckedCreateNestedManyWithoutVillageInput
 }
 
 export type VillageCreateOrConnectWithoutProjectsInput = {
@@ -828,6 +945,7 @@ export type VillageUpdateWithoutProjectsInput = {
   workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   region?: Prisma.RegionUpdateOneRequiredWithoutVillagesNestedInput
+  photos?: Prisma.VillagePhotoUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageUncheckedUpdateWithoutProjectsInput = {
@@ -846,6 +964,7 @@ export type VillageUncheckedUpdateWithoutProjectsInput = {
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VillagePhotoUncheckedUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageCreateManyRegionInput = {
@@ -881,6 +1000,7 @@ export type VillageUpdateWithoutRegionInput = {
   workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUpdateManyWithoutVillageNestedInput
+  photos?: Prisma.VillagePhotoUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageUncheckedUpdateWithoutRegionInput = {
@@ -899,6 +1019,7 @@ export type VillageUncheckedUpdateWithoutRegionInput = {
   workoutStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutVillageNestedInput
+  photos?: Prisma.VillagePhotoUncheckedUpdateManyWithoutVillageNestedInput
 }
 
 export type VillageUncheckedUpdateManyWithoutRegionInput = {
@@ -925,10 +1046,12 @@ export type VillageUncheckedUpdateManyWithoutRegionInput = {
 
 export type VillageCountOutputType = {
   projects: number
+  photos: number
 }
 
 export type VillageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projects?: boolean | VillageCountOutputTypeCountProjectsArgs
+  photos?: boolean | VillageCountOutputTypeCountPhotosArgs
 }
 
 /**
@@ -946,6 +1069,13 @@ export type VillageCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
  */
 export type VillageCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ProjectWhereInput
+}
+
+/**
+ * VillageCountOutputType without action
+ */
+export type VillageCountOutputTypeCountPhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VillagePhotoWhereInput
 }
 
 
@@ -967,6 +1097,7 @@ export type VillageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdAt?: boolean
   region?: boolean | Prisma.RegionDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Village$projectsArgs<ExtArgs>
+  photos?: boolean | Prisma.Village$photosArgs<ExtArgs>
   _count?: boolean | Prisma.VillageCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["village"]>
 
@@ -1030,6 +1161,7 @@ export type VillageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type VillageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   region?: boolean | Prisma.RegionDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Village$projectsArgs<ExtArgs>
+  photos?: boolean | Prisma.Village$photosArgs<ExtArgs>
   _count?: boolean | Prisma.VillageCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type VillageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1044,6 +1176,7 @@ export type $VillagePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     region: Prisma.$RegionPayload<ExtArgs>
     projects: Prisma.$ProjectPayload<ExtArgs>[]
+    photos: Prisma.$VillagePhotoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1457,6 +1590,7 @@ export interface Prisma__VillageClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   region<T extends Prisma.RegionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegionDefaultArgs<ExtArgs>>): Prisma.Prisma__RegionClient<runtime.Types.Result.GetResult<Prisma.$RegionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   projects<T extends Prisma.Village$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Village$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  photos<T extends Prisma.Village$photosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Village$photosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VillagePhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1923,6 +2057,30 @@ export type Village$projectsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
+}
+
+/**
+ * Village.photos
+ */
+export type Village$photosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VillagePhoto
+   */
+  select?: Prisma.VillagePhotoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VillagePhoto
+   */
+  omit?: Prisma.VillagePhotoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VillagePhotoInclude<ExtArgs> | null
+  where?: Prisma.VillagePhotoWhereInput
+  orderBy?: Prisma.VillagePhotoOrderByWithRelationInput | Prisma.VillagePhotoOrderByWithRelationInput[]
+  cursor?: Prisma.VillagePhotoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VillagePhotoScalarFieldEnum | Prisma.VillagePhotoScalarFieldEnum[]
 }
 
 /**

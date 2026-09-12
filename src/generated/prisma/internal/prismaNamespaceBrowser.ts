@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Region: 'Region',
   Village: 'Village',
+  VillagePhoto: 'VillagePhoto',
   Project: 'Project',
   Lecturer: 'Lecturer',
   Lecture: 'Lecture'
@@ -106,6 +107,21 @@ export const VillageScalarFieldEnum = {
 } as const
 
 export type VillageScalarFieldEnum = (typeof VillageScalarFieldEnum)[keyof typeof VillageScalarFieldEnum]
+
+
+export const VillagePhotoScalarFieldEnum = {
+  id: 'id',
+  villageId: 'villageId',
+  imageData: 'imageData',
+  mimeType: 'mimeType',
+  caption: 'caption',
+  submittedBy: 'submittedBy',
+  contact: 'contact',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type VillagePhotoScalarFieldEnum = (typeof VillagePhotoScalarFieldEnum)[keyof typeof VillagePhotoScalarFieldEnum]
 
 
 export const ProjectScalarFieldEnum = {

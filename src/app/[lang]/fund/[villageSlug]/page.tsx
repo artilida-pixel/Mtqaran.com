@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { pickLocalized } from "@/lib/localized";
 import ProjectCard from "@/components/fund/ProjectCard";
 import VillageSignBanner from "@/components/fund/VillageSignBanner";
+import VillagePhotoGallery from "@/components/fund/VillagePhotoGallery";
+import VillagePhotoForm from "@/components/fund/VillagePhotoForm";
 
 export default async function VillagePage({
   params,
@@ -22,6 +24,11 @@ export default async function VillagePage({
     include: {
       region: true,
       projects: { where: { status: { in: ["active", "completed"] } }, orderBy: { createdAt: "asc" } },
+      photos: {
+        where: { status: "approved" },
+        orderBy: { createdAt: "desc" },
+        omit: { imageData: true },
+      },
     },
   });
   if (!village) notFound();
@@ -85,6 +92,20 @@ export default async function VillagePage({
             ))}
           </div>
         )}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-bold">{dict.village.photos_title}</h2>
+        {village.photos.length === 0 ? (
+          <p className="mt-4 text-muted">{dict.village.photos_empty}</p>
+        ) : (
+          <div className="mt-4">
+            <VillagePhotoGallery photos={village.photos} />
+          </div>
+        )}
+        <div className="mt-5">
+          <VillagePhotoForm villageId={village.id} dict={dict} />
+        </div>
       </section>
     </div>
   );
