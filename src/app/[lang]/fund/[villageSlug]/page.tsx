@@ -67,7 +67,13 @@ export default async function VillagePage({
         </h1>
       </div>
 
-      {description && <p className="mt-4 max-w-2xl text-muted">{description}</p>}
+      {description && (
+        <div className="mt-4 max-w-3xl space-y-3 text-muted">
+          {description.split(/\n{2,}/).map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
+      )}
 
       <section className="mt-8">
         <h2 className="text-xl font-bold">{dict.village.workout_project_title}</h2>

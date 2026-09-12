@@ -90,6 +90,9 @@ async function main() {
       lng: number;
       population: number | null;
       coverImage?: string;
+      descriptionHy?: string;
+      descriptionRu?: string;
+      descriptionEn?: string;
     }[]
   )
     .filter((v) => regionBySlug.has(v.regionSlug))
@@ -104,6 +107,9 @@ async function main() {
       lng: v.lng,
       population: v.population,
       coverImage: v.coverImage ?? null,
+      descriptionHy: v.descriptionHy ?? null,
+      descriptionRu: v.descriptionRu ?? null,
+      descriptionEn: v.descriptionEn ?? null,
       workoutStatus: "proposed",
     }));
 
