@@ -19,24 +19,10 @@ export default function Header({
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href={`/${lang}`} className="flex flex-col items-center gap-1 py-1">
           <MountainMark className="h-10 w-16 text-on-ink" />
-          <span className="text-sm font-extrabold uppercase tracking-wider">MTQARAN</span>
+          <span className="text-sm font-extrabold uppercase tracking-wider">Mtqaran Foundation</span>
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-wide md:flex">
-          <Link
-            href={`/${lang}/academy`}
-            prefetch={false}
-            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
-          >
-            {dict.nav.academy}
-          </Link>
-          <Link
-            href={`/${lang}/fund`}
-            prefetch={false}
-            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
-          >
-            {dict.nav.fund}
-          </Link>
           <Link
             href={`/${lang}/about`}
             prefetch={false}
