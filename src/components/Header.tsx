@@ -16,25 +16,32 @@ export default function Header({
 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-2 bg-ink text-on-ink">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href={`/${lang}`} className="flex flex-col items-center gap-1 py-1">
+      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-3">
+        <Link href={`/${lang}`} className="justify-self-start">
           <MountainMark className="h-10 w-16 text-on-ink" />
-          <span className="text-sm font-extrabold uppercase tracking-wider">Mtqaran Foundation</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-wide md:flex">
-          <Link
-            href={`/${lang}/about`}
-            prefetch={false}
-            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
-          >
-            {dict.nav.about}
-          </Link>
-        </nav>
+        <Link
+          href={`/${lang}`}
+          className="justify-self-center text-lg font-extrabold uppercase tracking-[0.15em] sm:text-2xl"
+        >
+          Mtqaran Foundation
+        </Link>
 
-        <div className="flex items-center gap-3">
-          <ThemeToggle initialTheme={theme} />
-          <LanguageSwitcher current={lang} />
+        <div className="flex items-center justify-self-end gap-6">
+          <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-wide md:flex">
+            <Link
+              href={`/${lang}/about`}
+              prefetch={false}
+              className="text-on-ink-muted transition-colors hover:text-brand-apricot"
+            >
+              {dict.nav.about}
+            </Link>
+          </nav>
+          <div className="flex items-center gap-3">
+            <ThemeToggle initialTheme={theme} />
+            <LanguageSwitcher current={lang} />
+          </div>
         </div>
       </div>
     </header>
