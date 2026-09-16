@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import "../globals.css";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 // /admin isn't part of the trilingual public site (no [lang] prefix), so it
 // gets its own root layout rather than sharing [lang]/layout.tsx — Next.js

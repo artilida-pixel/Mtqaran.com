@@ -1,10 +1,31 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { canonicalPath, localeAlternates } from "@/lib/seo";
 import LecturerCard from "@/components/academy/LecturerCard";
 import LectureCard from "@/components/academy/LectureCard";
 import MountainSkyline from "@/components/MountainSkyline";
+
+const PATH_SUFFIX = "/academy";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  const path = canonicalPath(lang, PATH_SUFFIX);
+  return {
+    title: dict.academy.hero_title,
+    description: dict.academy.hero_subtitle,
+    alternates: { canonical: path, languages: localeAlternates(PATH_SUFFIX) },
+    openGraph: { title: dict.academy.hero_title, description: dict.academy.hero_subtitle, url: path },
+  };
+}
 
 export default async function AcademyPage({
   params,

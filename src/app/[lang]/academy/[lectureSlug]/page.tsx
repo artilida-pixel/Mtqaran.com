@@ -1,10 +1,44 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
-import { prisma } from "@/lib/prisma";
 import { pickLocalized } from "@/lib/localized";
+import { getLectureBySlug } from "@/lib/data";
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
+import { canonicalPath, localeAlternates, truncateForMeta } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string; lectureSlug: string }>;
+}): Promise<Metadata> {
+  const { lang, lectureSlug } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+
+  const lecture = await getLectureBySlug(lectureSlug);
+  if (!lecture) return {};
+
+  const title = pickLocalized(lecture, "title", lang);
+  const rawDescription = pickLocalized(lecture, "description", lang);
+  const description = truncateForMeta(rawDescription || dict.academy.hero_subtitle);
+  const pathSuffix = `/academy/${lectureSlug}`;
+  const path = canonicalPath(lang, pathSuffix);
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path, languages: localeAlternates(pathSuffix) },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      type: "video.other",
+      images: lecture.coverImage ? [lecture.coverImage] : undefined,
+    },
+  };
+}
 
 export default async function LecturePage({
   params,
@@ -16,10 +50,7 @@ export default async function LecturePage({
   const locale: Locale = lang;
   const dict = await getDictionary(locale);
 
-  const lecture = await prisma.lecture.findUnique({
-    where: { slug: lectureSlug },
-    include: { lecturer: true },
-  });
+  const lecture = await getLectureBySlug(lectureSlug);
   if (!lecture) notFound();
 
   const title = pickLocalized(lecture, "title", locale);
@@ -27,8 +58,25 @@ export default async function LecturePage({
   const lecturerName = lecture.lecturer ? pickLocalized(lecture.lecturer, "name", locale) : dict.academy.channel_name;
   const embedUrl = lecture.videoUrl ? getYouTubeEmbedUrl(lecture.videoUrl) : null;
 
+  const videoJsonLd = lecture.videoUrl
+    ? {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: title,
+        description: description || title,
+        thumbnailUrl: lecture.coverImage ? [lecture.coverImage] : undefined,
+        embedUrl,
+        duration: lecture.durationMin ? `PT${lecture.durationMin}M` : undefined,
+        inLanguage: locale,
+      }
+    : null;
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
+    <>
+      {videoJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }} />
+      )}
+      <div className="mx-auto max-w-4xl px-4 py-12">
       <Link href={`/${locale}/academy`} className="text-sm font-medium text-foreground">
         ← {dict.academy.back_to_lectures}
       </Link>
@@ -69,6 +117,7 @@ export default async function LecturePage({
       )}
 
       {description && <p className="mt-6 max-w-2xl text-muted">{description}</p>}
-    </div>
+      </div>
+    </>
   );
 }

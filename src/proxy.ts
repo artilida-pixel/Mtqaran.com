@@ -33,5 +33,10 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|admin|.*\\..*).*)"],
+  // `icon` is excluded alongside the other root-level, non-locale routes
+  // (admin, api) because it's Next's generated-icon route (src/app/icon.tsx)
+  // — it has no file extension in its URL, so the dot-based exclusion below
+  // doesn't already catch it, and without this it gets redirected to
+  // /hy/icon and 404s.
+  matcher: ["/((?!_next|api|admin|icon|.*\\..*).*)"],
 };

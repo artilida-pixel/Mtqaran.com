@@ -1,13 +1,47 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
-import { prisma } from "@/lib/prisma";
 import { pickLocalized } from "@/lib/localized";
+import { getVillageBySlug } from "@/lib/data";
 import ProjectCard from "@/components/fund/ProjectCard";
 import VillageSignBanner from "@/components/fund/VillageSignBanner";
 import VillagePhotoGallery from "@/components/fund/VillagePhotoGallery";
 import VillagePhotoForm from "@/components/fund/VillagePhotoForm";
+import { canonicalPath, localeAlternates, truncateForMeta } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string; villageSlug: string }>;
+}): Promise<Metadata> {
+  const { lang, villageSlug } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+
+  const village = await getVillageBySlug(villageSlug);
+  if (!village) return {};
+
+  const name = pickLocalized(village, "name", lang);
+  const regionName = pickLocalized(village.region, "name", lang);
+  const rawDescription = pickLocalized(village, "description", lang);
+  const description = truncateForMeta(rawDescription || `${name}, ${regionName}. ${dict.fund.hero_subtitle}`);
+  const pathSuffix = `/fund/${villageSlug}`;
+  const path = canonicalPath(lang, pathSuffix);
+
+  return {
+    title: `${name} — ${regionName}`,
+    description,
+    alternates: { canonical: path, languages: localeAlternates(pathSuffix) },
+    openGraph: {
+      title: name,
+      description,
+      url: path,
+      images: village.coverImage ? [village.coverImage] : undefined,
+    },
+  };
+}
 
 export default async function VillagePage({
   params,
@@ -19,18 +53,7 @@ export default async function VillagePage({
   const locale: Locale = lang;
   const dict = await getDictionary(locale);
 
-  const village = await prisma.village.findUnique({
-    where: { slug: villageSlug },
-    include: {
-      region: true,
-      projects: { where: { status: { in: ["active", "completed"] } }, orderBy: { createdAt: "asc" } },
-      photos: {
-        where: { status: "approved" },
-        orderBy: { createdAt: "desc" },
-        omit: { imageData: true },
-      },
-    },
-  });
+  const village = await getVillageBySlug(villageSlug);
   if (!village) notFound();
 
   const workoutProject = village.projects.find((p) => p.type === "workout_ground");

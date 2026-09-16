@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import "../globals.css";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
+import { SITE_URL, canonicalPath, localeAlternates } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,8 @@ export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+const OG_LOCALE: Record<Locale, string> = { hy: "hy_AM", ru: "ru_RU", en: "en_US" };
+
 export async function generateMetadata({
   params,
 }: {
@@ -31,10 +34,34 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
+  const locale: Locale = lang;
+  const dict = await getDictionary(locale);
+  const path = canonicalPath(locale, "");
+
   return {
-    title: dict.meta.title,
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: dict.meta.title,
+      template: "%s — MTQARAN",
+    },
     description: dict.meta.description,
+    alternates: {
+      canonical: path,
+      languages: localeAlternates(""),
+    },
+    openGraph: {
+      type: "website",
+      siteName: "MTQARAN",
+      locale: OG_LOCALE[locale],
+      title: dict.meta.title,
+      description: dict.meta.description,
+      url: path,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+    },
   };
 }
 

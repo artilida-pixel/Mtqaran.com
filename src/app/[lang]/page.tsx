@@ -8,6 +8,7 @@ import MountainSkyline from "@/components/MountainSkyline";
 import MountainMark from "@/components/MountainMark";
 import PillButton from "@/components/PillButton";
 import CornerArrowBadge from "@/components/CornerArrowBadge";
+import { SITE_URL } from "@/lib/seo";
 
 export default async function HomePage({
   params,
@@ -25,8 +26,21 @@ export default async function HomePage({
     prisma.lecture.count(),
   ]);
 
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    name: "MTQARAN",
+    url: `${SITE_URL}/${locale}`,
+    logo: `${SITE_URL}/icon`,
+    description: dict.meta.description,
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:pt-20">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>

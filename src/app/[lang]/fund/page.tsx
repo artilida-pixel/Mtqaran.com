@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
@@ -7,6 +8,26 @@ import ProjectCard from "@/components/fund/ProjectCard";
 import { pickLocalized } from "@/lib/localized";
 import type { RegionListItem } from "@/components/fund/types";
 import { getArmeniaRegionsGeoJson, getArmeniaRoadsGeoJson, getArmeniaWaterGeoJson } from "@/lib/armeniaGeo";
+import { canonicalPath, localeAlternates } from "@/lib/seo";
+
+const PATH_SUFFIX = "/fund";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  const path = canonicalPath(lang, PATH_SUFFIX);
+  return {
+    title: dict.fund.hero_title,
+    description: dict.fund.hero_subtitle,
+    alternates: { canonical: path, languages: localeAlternates(PATH_SUFFIX) },
+    openGraph: { title: dict.fund.hero_title, description: dict.fund.hero_subtitle, url: path },
+  };
+}
 
 export default async function FundPage({
   params,
