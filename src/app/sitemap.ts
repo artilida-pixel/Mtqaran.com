@@ -38,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...entriesFor("", now, "weekly", 1),
+    ...entriesFor("/about", now, "monthly", 0.7),
     ...entriesFor("/academy", now, "weekly", 0.8),
     ...entriesFor("/fund", now, "daily", 0.8),
     ...lectures.flatMap((l) => entriesFor(`/academy/${l.slug}`, l.createdAt, "monthly", 0.6)),

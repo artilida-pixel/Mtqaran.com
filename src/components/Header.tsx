@@ -37,6 +37,13 @@ export default function Header({
           >
             {dict.nav.fund}
           </Link>
+          <Link
+            href={`/${lang}/about`}
+            prefetch={false}
+            className="text-on-ink-muted transition-colors hover:text-brand-apricot"
+          >
+            {dict.nav.about}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
