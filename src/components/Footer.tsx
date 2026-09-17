@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import MountainMark from "./MountainMark";
+import SocialLinks from "./SocialLinks";
 
 export default function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
@@ -13,6 +14,10 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: Dictionary 
           </span>
           <p>{dict.footer.made_for}</p>
         </div>
+        <SocialLinks
+          className="mt-6"
+          itemClassName="border-white/20 text-on-ink hover:border-brand-apricot hover:text-brand-apricot"
+        />
         <p className="mt-4">
           © {new Date().getFullYear()} MTQARAN. {dict.footer.rights}
         </p>

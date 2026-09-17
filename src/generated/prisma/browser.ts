@@ -47,3 +47,8 @@ export type Lecturer = Prisma.LecturerModel
  * 
  */
 export type Lecture = Prisma.LectureModel
+/**
+ * Model NewsItem
+ * 
+ */
+export type NewsItem = Prisma.NewsItemModel

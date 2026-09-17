@@ -47,6 +47,13 @@ export type LecturerMinAggregateOutputType = {
   bioRu: string | null
   bioEn: string | null
   photo: string | null
+  photoData: runtime.Bytes | null
+  photoMime: string | null
+  telegram: string | null
+  instagram: string | null
+  facebook: string | null
+  youtube: string | null
+  website: string | null
   order: number | null
 }
 
@@ -63,6 +70,13 @@ export type LecturerMaxAggregateOutputType = {
   bioRu: string | null
   bioEn: string | null
   photo: string | null
+  photoData: runtime.Bytes | null
+  photoMime: string | null
+  telegram: string | null
+  instagram: string | null
+  facebook: string | null
+  youtube: string | null
+  website: string | null
   order: number | null
 }
 
@@ -79,6 +93,13 @@ export type LecturerCountAggregateOutputType = {
   bioRu: number
   bioEn: number
   photo: number
+  photoData: number
+  photoMime: number
+  telegram: number
+  instagram: number
+  facebook: number
+  youtube: number
+  website: number
   order: number
   _all: number
 }
@@ -105,6 +126,13 @@ export type LecturerMinAggregateInputType = {
   bioRu?: true
   bioEn?: true
   photo?: true
+  photoData?: true
+  photoMime?: true
+  telegram?: true
+  instagram?: true
+  facebook?: true
+  youtube?: true
+  website?: true
   order?: true
 }
 
@@ -121,6 +149,13 @@ export type LecturerMaxAggregateInputType = {
   bioRu?: true
   bioEn?: true
   photo?: true
+  photoData?: true
+  photoMime?: true
+  telegram?: true
+  instagram?: true
+  facebook?: true
+  youtube?: true
+  website?: true
   order?: true
 }
 
@@ -137,6 +172,13 @@ export type LecturerCountAggregateInputType = {
   bioRu?: true
   bioEn?: true
   photo?: true
+  photoData?: true
+  photoMime?: true
+  telegram?: true
+  instagram?: true
+  facebook?: true
+  youtube?: true
+  website?: true
   order?: true
   _all?: true
 }
@@ -240,6 +282,13 @@ export type LecturerGroupByOutputType = {
   bioRu: string | null
   bioEn: string | null
   photo: string | null
+  photoData: runtime.Bytes | null
+  photoMime: string | null
+  telegram: string | null
+  instagram: string | null
+  facebook: string | null
+  youtube: string | null
+  website: string | null
   order: number
   _count: LecturerCountAggregateOutputType | null
   _avg: LecturerAvgAggregateOutputType | null
@@ -279,6 +328,13 @@ export type LecturerWhereInput = {
   bioRu?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   bioEn?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   photo?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  photoData?: Prisma.BytesNullableFilter<"Lecturer"> | runtime.Bytes | null
+  photoMime?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  telegram?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  instagram?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  facebook?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  youtube?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  website?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   order?: Prisma.IntFilter<"Lecturer"> | number
   lectures?: Prisma.LectureListRelationFilter
 }
@@ -296,6 +352,13 @@ export type LecturerOrderByWithRelationInput = {
   bioRu?: Prisma.SortOrderInput | Prisma.SortOrder
   bioEn?: Prisma.SortOrderInput | Prisma.SortOrder
   photo?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoData?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoMime?: Prisma.SortOrderInput | Prisma.SortOrder
+  telegram?: Prisma.SortOrderInput | Prisma.SortOrder
+  instagram?: Prisma.SortOrderInput | Prisma.SortOrder
+  facebook?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtube?: Prisma.SortOrderInput | Prisma.SortOrder
+  website?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
   lectures?: Prisma.LectureOrderByRelationAggregateInput
 }
@@ -316,6 +379,13 @@ export type LecturerWhereUniqueInput = Prisma.AtLeast<{
   bioRu?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   bioEn?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   photo?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  photoData?: Prisma.BytesNullableFilter<"Lecturer"> | runtime.Bytes | null
+  photoMime?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  telegram?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  instagram?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  facebook?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  youtube?: Prisma.StringNullableFilter<"Lecturer"> | string | null
+  website?: Prisma.StringNullableFilter<"Lecturer"> | string | null
   order?: Prisma.IntFilter<"Lecturer"> | number
   lectures?: Prisma.LectureListRelationFilter
 }, "id" | "slug">
@@ -333,6 +403,13 @@ export type LecturerOrderByWithAggregationInput = {
   bioRu?: Prisma.SortOrderInput | Prisma.SortOrder
   bioEn?: Prisma.SortOrderInput | Prisma.SortOrder
   photo?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoData?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoMime?: Prisma.SortOrderInput | Prisma.SortOrder
+  telegram?: Prisma.SortOrderInput | Prisma.SortOrder
+  instagram?: Prisma.SortOrderInput | Prisma.SortOrder
+  facebook?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtube?: Prisma.SortOrderInput | Prisma.SortOrder
+  website?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
   _count?: Prisma.LecturerCountOrderByAggregateInput
   _avg?: Prisma.LecturerAvgOrderByAggregateInput
@@ -357,6 +434,13 @@ export type LecturerScalarWhereWithAggregatesInput = {
   bioRu?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
   bioEn?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
   photo?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  photoData?: Prisma.BytesNullableWithAggregatesFilter<"Lecturer"> | runtime.Bytes | null
+  photoMime?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  telegram?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  instagram?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  facebook?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  youtube?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
+  website?: Prisma.StringNullableWithAggregatesFilter<"Lecturer"> | string | null
   order?: Prisma.IntWithAggregatesFilter<"Lecturer"> | number
 }
 
@@ -373,6 +457,13 @@ export type LecturerCreateInput = {
   bioRu?: string | null
   bioEn?: string | null
   photo?: string | null
+  photoData?: runtime.Bytes | null
+  photoMime?: string | null
+  telegram?: string | null
+  instagram?: string | null
+  facebook?: string | null
+  youtube?: string | null
+  website?: string | null
   order?: number
   lectures?: Prisma.LectureCreateNestedManyWithoutLecturerInput
 }
@@ -390,6 +481,13 @@ export type LecturerUncheckedCreateInput = {
   bioRu?: string | null
   bioEn?: string | null
   photo?: string | null
+  photoData?: runtime.Bytes | null
+  photoMime?: string | null
+  telegram?: string | null
+  instagram?: string | null
+  facebook?: string | null
+  youtube?: string | null
+  website?: string | null
   order?: number
   lectures?: Prisma.LectureUncheckedCreateNestedManyWithoutLecturerInput
 }
@@ -407,6 +505,13 @@ export type LecturerUpdateInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   lectures?: Prisma.LectureUpdateManyWithoutLecturerNestedInput
 }
@@ -424,6 +529,13 @@ export type LecturerUncheckedUpdateInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   lectures?: Prisma.LectureUncheckedUpdateManyWithoutLecturerNestedInput
 }
@@ -441,6 +553,13 @@ export type LecturerCreateManyInput = {
   bioRu?: string | null
   bioEn?: string | null
   photo?: string | null
+  photoData?: runtime.Bytes | null
+  photoMime?: string | null
+  telegram?: string | null
+  instagram?: string | null
+  facebook?: string | null
+  youtube?: string | null
+  website?: string | null
   order?: number
 }
 
@@ -457,6 +576,13 @@ export type LecturerUpdateManyMutationInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -473,6 +599,13 @@ export type LecturerUncheckedUpdateManyInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -489,6 +622,13 @@ export type LecturerCountOrderByAggregateInput = {
   bioRu?: Prisma.SortOrder
   bioEn?: Prisma.SortOrder
   photo?: Prisma.SortOrder
+  photoData?: Prisma.SortOrder
+  photoMime?: Prisma.SortOrder
+  telegram?: Prisma.SortOrder
+  instagram?: Prisma.SortOrder
+  facebook?: Prisma.SortOrder
+  youtube?: Prisma.SortOrder
+  website?: Prisma.SortOrder
   order?: Prisma.SortOrder
 }
 
@@ -509,6 +649,13 @@ export type LecturerMaxOrderByAggregateInput = {
   bioRu?: Prisma.SortOrder
   bioEn?: Prisma.SortOrder
   photo?: Prisma.SortOrder
+  photoData?: Prisma.SortOrder
+  photoMime?: Prisma.SortOrder
+  telegram?: Prisma.SortOrder
+  instagram?: Prisma.SortOrder
+  facebook?: Prisma.SortOrder
+  youtube?: Prisma.SortOrder
+  website?: Prisma.SortOrder
   order?: Prisma.SortOrder
 }
 
@@ -525,6 +672,13 @@ export type LecturerMinOrderByAggregateInput = {
   bioRu?: Prisma.SortOrder
   bioEn?: Prisma.SortOrder
   photo?: Prisma.SortOrder
+  photoData?: Prisma.SortOrder
+  photoMime?: Prisma.SortOrder
+  telegram?: Prisma.SortOrder
+  instagram?: Prisma.SortOrder
+  facebook?: Prisma.SortOrder
+  youtube?: Prisma.SortOrder
+  website?: Prisma.SortOrder
   order?: Prisma.SortOrder
 }
 
@@ -535,6 +689,10 @@ export type LecturerSumOrderByAggregateInput = {
 export type LecturerNullableScalarRelationFilter = {
   is?: Prisma.LecturerWhereInput | null
   isNot?: Prisma.LecturerWhereInput | null
+}
+
+export type NullableBytesFieldUpdateOperationsInput = {
+  set?: runtime.Bytes | null
 }
 
 export type LecturerCreateNestedOneWithoutLecturesInput = {
@@ -566,6 +724,13 @@ export type LecturerCreateWithoutLecturesInput = {
   bioRu?: string | null
   bioEn?: string | null
   photo?: string | null
+  photoData?: runtime.Bytes | null
+  photoMime?: string | null
+  telegram?: string | null
+  instagram?: string | null
+  facebook?: string | null
+  youtube?: string | null
+  website?: string | null
   order?: number
 }
 
@@ -582,6 +747,13 @@ export type LecturerUncheckedCreateWithoutLecturesInput = {
   bioRu?: string | null
   bioEn?: string | null
   photo?: string | null
+  photoData?: runtime.Bytes | null
+  photoMime?: string | null
+  telegram?: string | null
+  instagram?: string | null
+  facebook?: string | null
+  youtube?: string | null
+  website?: string | null
   order?: number
 }
 
@@ -614,6 +786,13 @@ export type LecturerUpdateWithoutLecturesInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -630,6 +809,13 @@ export type LecturerUncheckedUpdateWithoutLecturesInput = {
   bioRu?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bioEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoData?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
+  photoMime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebook?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtube?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -677,6 +863,13 @@ export type LecturerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   bioRu?: boolean
   bioEn?: boolean
   photo?: boolean
+  photoData?: boolean
+  photoMime?: boolean
+  telegram?: boolean
+  instagram?: boolean
+  facebook?: boolean
+  youtube?: boolean
+  website?: boolean
   order?: boolean
   lectures?: boolean | Prisma.Lecturer$lecturesArgs<ExtArgs>
   _count?: boolean | Prisma.LecturerCountOutputTypeDefaultArgs<ExtArgs>
@@ -695,6 +888,13 @@ export type LecturerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   bioRu?: boolean
   bioEn?: boolean
   photo?: boolean
+  photoData?: boolean
+  photoMime?: boolean
+  telegram?: boolean
+  instagram?: boolean
+  facebook?: boolean
+  youtube?: boolean
+  website?: boolean
   order?: boolean
 }, ExtArgs["result"]["lecturer"]>
 
@@ -711,6 +911,13 @@ export type LecturerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   bioRu?: boolean
   bioEn?: boolean
   photo?: boolean
+  photoData?: boolean
+  photoMime?: boolean
+  telegram?: boolean
+  instagram?: boolean
+  facebook?: boolean
+  youtube?: boolean
+  website?: boolean
   order?: boolean
 }, ExtArgs["result"]["lecturer"]>
 
@@ -727,10 +934,17 @@ export type LecturerSelectScalar = {
   bioRu?: boolean
   bioEn?: boolean
   photo?: boolean
+  photoData?: boolean
+  photoMime?: boolean
+  telegram?: boolean
+  instagram?: boolean
+  facebook?: boolean
+  youtube?: boolean
+  website?: boolean
   order?: boolean
 }
 
-export type LecturerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "nameHy" | "nameRu" | "nameEn" | "titleHy" | "titleRu" | "titleEn" | "bioHy" | "bioRu" | "bioEn" | "photo" | "order", ExtArgs["result"]["lecturer"]>
+export type LecturerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "nameHy" | "nameRu" | "nameEn" | "titleHy" | "titleRu" | "titleEn" | "bioHy" | "bioRu" | "bioEn" | "photo" | "photoData" | "photoMime" | "telegram" | "instagram" | "facebook" | "youtube" | "website" | "order", ExtArgs["result"]["lecturer"]>
 export type LecturerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   lectures?: boolean | Prisma.Lecturer$lecturesArgs<ExtArgs>
   _count?: boolean | Prisma.LecturerCountOutputTypeDefaultArgs<ExtArgs>
@@ -756,6 +970,13 @@ export type $LecturerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     bioRu: string | null
     bioEn: string | null
     photo: string | null
+    photoData: runtime.Bytes | null
+    photoMime: string | null
+    telegram: string | null
+    instagram: string | null
+    facebook: string | null
+    youtube: string | null
+    website: string | null
     order: number
   }, ExtArgs["result"]["lecturer"]>
   composites: {}
@@ -1193,6 +1414,13 @@ export interface LecturerFieldRefs {
   readonly bioRu: Prisma.FieldRef<"Lecturer", 'String'>
   readonly bioEn: Prisma.FieldRef<"Lecturer", 'String'>
   readonly photo: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly photoData: Prisma.FieldRef<"Lecturer", 'Bytes'>
+  readonly photoMime: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly telegram: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly instagram: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly facebook: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly youtube: Prisma.FieldRef<"Lecturer", 'String'>
+  readonly website: Prisma.FieldRef<"Lecturer", 'String'>
   readonly order: Prisma.FieldRef<"Lecturer", 'Int'>
 }
     

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import NewsAdmin from "./NewsAdmin";
+import LecturersAdmin from "./LecturersAdmin";
 
 type AdminProject = {
   id: string;
@@ -225,6 +227,10 @@ export default function AdminPage() {
           ))}
         </div>
       </section>
+
+      <NewsAdmin />
+
+      <LecturersAdmin />
     </div>
   );
 }

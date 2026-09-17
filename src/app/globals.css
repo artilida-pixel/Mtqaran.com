@@ -7,6 +7,11 @@
   --surface: #ffffff;
   --border: #e7ddcd;
   --muted: #7a6f60;
+  /* Warm tint behind a full-width section (the news band), so it separates
+     from the page without the flat --surface white. Unlike the brand colors
+     below it has to follow the theme: --brand-orange-soft is a light chip
+     color and stays light in dark mode, which would blind you here. */
+  --band: #fdf1e3;
 
   /* MTQARAN brand: black + orange duotone. These stay constant across themes. */
   --brand-apricot: #ef7d1f;
@@ -31,6 +36,7 @@
     --surface: #201a13;
     --border: #3a2d1f;
     --muted: #b9ab98;
+    --band: #241b12;
   }
 }
 
@@ -40,6 +46,7 @@
   --surface: #201a13;
   --border: #3a2d1f;
   --muted: #b9ab98;
+  --band: #241b12;
 }
 
 @theme inline {
@@ -58,6 +65,7 @@
   --color-on-ink: var(--on-ink);
   --color-on-ink-muted: var(--on-ink-muted);
   --color-muted: var(--muted);
+  --color-band: var(--band);
 }
 
 body {

@@ -40,3 +40,12 @@ export function truncateForMeta(text: string, maxLength = 155): string {
   const lastSpace = cut.lastIndexOf(" ");
   return `${cut.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`;
 }
+
+// The homepage is on ISR too (see its `revalidate` export), so publishing a
+// news item or adding a lecturer has to bust it in every locale — otherwise
+// the admin publishes something and doesn't see it for another five minutes.
+export function revalidateHome(): void {
+  for (const locale of locales) {
+    revalidatePath(canonicalPath(locale, ""));
+  }
+}

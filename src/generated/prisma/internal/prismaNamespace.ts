@@ -402,7 +402,8 @@ export const ModelName = {
   VillagePhoto: 'VillagePhoto',
   Project: 'Project',
   Lecturer: 'Lecturer',
-  Lecture: 'Lecture'
+  Lecture: 'Lecture',
+  NewsItem: 'NewsItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -418,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "region" | "village" | "villagePhoto" | "project" | "lecturer" | "lecture"
+    modelProps: "region" | "village" | "villagePhoto" | "project" | "lecturer" | "lecture" | "newsItem"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -866,6 +867,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    NewsItem: {
+      payload: Prisma.$NewsItemPayload<ExtArgs>
+      fields: Prisma.NewsItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NewsItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NewsItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        findFirst: {
+          args: Prisma.NewsItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NewsItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        findMany: {
+          args: Prisma.NewsItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>[]
+        }
+        create: {
+          args: Prisma.NewsItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        createMany: {
+          args: Prisma.NewsItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NewsItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>[]
+        }
+        delete: {
+          args: Prisma.NewsItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        update: {
+          args: Prisma.NewsItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.NewsItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NewsItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NewsItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.NewsItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NewsItemPayload>
+        }
+        aggregate: {
+          args: Prisma.NewsItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNewsItem>
+        }
+        groupBy: {
+          args: Prisma.NewsItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NewsItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NewsItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NewsItemCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -988,6 +1063,13 @@ export const LecturerScalarFieldEnum = {
   bioRu: 'bioRu',
   bioEn: 'bioEn',
   photo: 'photo',
+  photoData: 'photoData',
+  photoMime: 'photoMime',
+  telegram: 'telegram',
+  instagram: 'instagram',
+  facebook: 'facebook',
+  youtube: 'youtube',
+  website: 'website',
   order: 'order'
 } as const
 
@@ -1014,6 +1096,25 @@ export const LectureScalarFieldEnum = {
 } as const
 
 export type LectureScalarFieldEnum = (typeof LectureScalarFieldEnum)[keyof typeof LectureScalarFieldEnum]
+
+
+export const NewsItemScalarFieldEnum = {
+  id: 'id',
+  titleHy: 'titleHy',
+  titleRu: 'titleRu',
+  titleEn: 'titleEn',
+  bodyHy: 'bodyHy',
+  bodyRu: 'bodyRu',
+  bodyEn: 'bodyEn',
+  imageData: 'imageData',
+  mimeType: 'mimeType',
+  sourceUrl: 'sourceUrl',
+  published: 'published',
+  publishedAt: 'publishedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type NewsItemScalarFieldEnum = (typeof NewsItemScalarFieldEnum)[keyof typeof NewsItemScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1279,6 +1380,7 @@ export type GlobalOmitConfig = {
   project?: Prisma.ProjectOmit
   lecturer?: Prisma.LecturerOmit
   lecture?: Prisma.LectureOmit
+  newsItem?: Prisma.NewsItemOmit
 }
 
 /* Types for Logging */

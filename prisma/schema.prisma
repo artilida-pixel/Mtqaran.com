@@ -98,7 +98,17 @@ model Lecturer {
   bioHy     String?
   bioRu     String?
   bioEn     String?
+  // `photo` is a path/URL for lecturers seeded from a file; `photoData` holds
+  // the bytes when the photo was uploaded through the admin panel instead,
+  // the same way village photos are stored.
   photo     String?
+  photoData Bytes?
+  photoMime String?  @default("image/jpeg")
+  telegram  String?
+  instagram String?
+  facebook  String?
+  youtube   String?
+  website   String?
   order     Int      @default(0)
   lectures  Lecture[]
 }
@@ -124,4 +134,29 @@ model Lecture {
 
   @@index([lecturerId])
   @@index([category])
+}
+
+// ---------- News ----------
+
+// A short news post ("a new workout ground opened", "a new lecture is up").
+// Written in the admin panel, normally by pasting a post copied out of the
+// Telegram channel, so every language is optional: whoever writes it fills in
+// the language they have and the site falls back to another one rather than
+// showing an empty card.
+model NewsItem {
+  id          String   @id @default(cuid())
+  titleHy     String?
+  titleRu     String?
+  titleEn     String?
+  bodyHy      String?
+  bodyRu      String?
+  bodyEn      String?
+  imageData   Bytes?
+  mimeType    String?  @default("image/jpeg")
+  sourceUrl   String? // link back to the original Telegram post, if any
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([published, publishedAt])
 }

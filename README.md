@@ -16,7 +16,7 @@ PostgreSQL) и `ADMIN_PASSWORD` (пароль админки).
 ```bash
 npm install
 npx prisma migrate dev
-npm run db:seed   # 10 марзов, 954 села официального реестра, 3 лекции с YouTube
+npm run db:seed   # 10 марзов, 954 села официального реестра, 2 лекции с YouTube
 npm run dev       # http://localhost:3010
 ```
 

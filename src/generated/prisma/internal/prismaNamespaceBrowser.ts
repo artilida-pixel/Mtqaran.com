@@ -56,7 +56,8 @@ export const ModelName = {
   VillagePhoto: 'VillagePhoto',
   Project: 'Project',
   Lecturer: 'Lecturer',
-  Lecture: 'Lecture'
+  Lecture: 'Lecture',
+  NewsItem: 'NewsItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -158,6 +159,13 @@ export const LecturerScalarFieldEnum = {
   bioRu: 'bioRu',
   bioEn: 'bioEn',
   photo: 'photo',
+  photoData: 'photoData',
+  photoMime: 'photoMime',
+  telegram: 'telegram',
+  instagram: 'instagram',
+  facebook: 'facebook',
+  youtube: 'youtube',
+  website: 'website',
   order: 'order'
 } as const
 
@@ -184,6 +192,25 @@ export const LectureScalarFieldEnum = {
 } as const
 
 export type LectureScalarFieldEnum = (typeof LectureScalarFieldEnum)[keyof typeof LectureScalarFieldEnum]
+
+
+export const NewsItemScalarFieldEnum = {
+  id: 'id',
+  titleHy: 'titleHy',
+  titleRu: 'titleRu',
+  titleEn: 'titleEn',
+  bodyHy: 'bodyHy',
+  bodyRu: 'bodyRu',
+  bodyEn: 'bodyEn',
+  imageData: 'imageData',
+  mimeType: 'mimeType',
+  sourceUrl: 'sourceUrl',
+  published: 'published',
+  publishedAt: 'publishedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type NewsItemScalarFieldEnum = (typeof NewsItemScalarFieldEnum)[keyof typeof NewsItemScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -32,7 +32,13 @@
     "stats_villages": "գյուղ քարտեզի վրա",
     "stats_regions": "Հայաստանի մարզ",
     "stats_lectures": "դասախոսություն Ակադեմիայում",
-    "stats_goal": "դրամ նպատակ մեկ հրապարակի համար"
+    "stats_goal": "դրամ նպատակ մեկ հրապարակի համար",
+    "news_title": "Նորություններ",
+    "news_read_more": "Կարդալ ամբողջությամբ",
+    "directions_title": "Մեր ուղղությունները",
+    "lecturers_title": "Մեր դասախոսները",
+    "lecturers_text": "Մարդիկ, ովքեր կարդում են MTQARAN Ակադեմիայի դասախոսությունները։",
+    "social_title": "Մենք սոցցանցերում"
   },
   "academy": {
     "hero_title": "MTQARAN Ակադեմիա",

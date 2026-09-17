@@ -20,3 +20,23 @@ export const getLectureBySlug = cache(async (slug: string) => {
     include: { lecturer: true },
   });
 });
+
+// Homepage news strip. `imageData` is deliberately omitted: the bytes are
+// served by /api/news/[id]/image instead of being dragged through the page
+// payload for every card.
+export const getLatestNews = cache(async (take = 3) => {
+  return prisma.newsItem.findMany({
+    where: { published: true },
+    orderBy: { publishedAt: "desc" },
+    take,
+    omit: { imageData: true },
+  });
+});
+
+// Same idea for lecturer portraits — see /api/lecturers/[id]/photo.
+export const getLecturers = cache(async () => {
+  return prisma.lecturer.findMany({
+    orderBy: [{ order: "asc" }, { nameHy: "asc" }],
+    omit: { photoData: true },
+  });
+});

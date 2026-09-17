@@ -32,7 +32,13 @@
     "stats_villages": "деревень на карте",
     "stats_regions": "областей Армении",
     "stats_lectures": "лекций в Академии",
-    "stats_goal": "драм — цель на 1 площадку"
+    "stats_goal": "драм — цель на 1 площадку",
+    "news_title": "Новости",
+    "news_read_more": "Читать полностью",
+    "directions_title": "Наши направления",
+    "lecturers_title": "Наши преподаватели",
+    "lecturers_text": "Люди, которые читают лекции Академии MTQARAN.",
+    "social_title": "Мы в соцсетях"
   },
   "academy": {
     "hero_title": "Академия MTQARAN",

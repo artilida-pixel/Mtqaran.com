@@ -32,7 +32,13 @@
     "stats_villages": "villages on the map",
     "stats_regions": "regions of Armenia",
     "stats_lectures": "lectures in the Academy",
-    "stats_goal": "AMD goal per ground"
+    "stats_goal": "AMD goal per ground",
+    "news_title": "News",
+    "news_read_more": "Read in full",
+    "directions_title": "Our directions",
+    "lecturers_title": "Our lecturers",
+    "lecturers_text": "The people behind the MTQARAN Academy lectures.",
+    "social_title": "Follow us"
   },
   "academy": {
     "hero_title": "MTQARAN Academy",
