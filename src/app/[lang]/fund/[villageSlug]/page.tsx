@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
@@ -82,12 +83,20 @@ export default async function VillagePage({
 
       <div className="mt-4">
         {village.coverImage ? (
-          // eslint-disable-next-line @next/next/no-img-element -- local static asset, pre-compressed at import time
-          <img
-            src={village.coverImage}
-            alt={village.nameEn}
-            className="aspect-[21/9] w-full rounded-2xl object-cover sm:aspect-[3/1]"
-          />
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl sm:aspect-[3/1]">
+            <Image
+              src={village.coverImage}
+              alt={village.nameEn}
+              fill
+              // The banner spans the max-w-5xl column, so past 1024px it never
+              // needs more than 992px of image no matter how wide the screen.
+              sizes="(max-width: 1024px) 100vw, 992px"
+              className="object-cover"
+              // Hero image at the top of the page — the LCP element here.
+              // (Next 16 deprecated `priority` in favour of `preload`.)
+              preload
+            />
+          </div>
         ) : (
           <VillageSignBanner nameHy={village.nameHy} nameEn={village.nameEn} />
         )}
