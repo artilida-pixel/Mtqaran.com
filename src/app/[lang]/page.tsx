@@ -75,6 +75,22 @@ export default async function HomePage({
         </div>
       </section>
 
+      <section className="mx-auto max-w-3xl px-4 pb-16">
+        <div className="space-y-4 text-lg text-muted">
+          <p>{dict.about.p1}</p>
+          <p>{dict.about.p2}</p>
+          <p>{dict.about.p3}</p>
+        </div>
+        <Link
+          href={`/${locale}/about`}
+          prefetch={false}
+          className="mt-6 inline-flex items-center gap-1 font-semibold text-brand-apricot-dark transition-colors hover:text-brand-apricot"
+        >
+          {dict.nav.about}
+          <span aria-hidden="true">→</span>
+        </Link>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="grid gap-6 sm:grid-cols-5">
           <Link
