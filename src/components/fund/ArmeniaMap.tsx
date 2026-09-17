@@ -190,11 +190,32 @@ const WATER_STYLE: L.PathOptions = {
   fillOpacity: 0.55,
 };
 
+// Fetched client-side from public/geo/ (long-cached static files, see
+// next.config.ts) instead of being passed down as page props — the roads
+// layer alone is ~1.3MB, and embedding that in every /fund page's own
+// server response meant re-downloading it on every visit instead of once
+// per browser, ever.
+function useGeoJson(path: string): FeatureCollection | null {
+  const [data, setData] = useState<FeatureCollection | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(path)
+      .then((res) => res.json())
+      .then((json: FeatureCollection) => {
+        if (!cancelled) setData(json);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [path]);
+  return data;
+}
+
+const EMPTY_GEOJSON: FeatureCollection = { type: "FeatureCollection", features: [] };
+
 export default function ArmeniaMap({
   villages,
-  regionsGeo,
-  roadsGeo,
-  waterGeo,
   regionNameBySlug,
   activeRegionSlug,
   onRegionClick,
@@ -206,9 +227,6 @@ export default function ArmeniaMap({
   onToggleFullscreen,
 }: {
   villages: VillageMapItem[];
-  regionsGeo: FeatureCollection;
-  roadsGeo: FeatureCollection;
-  waterGeo: FeatureCollection;
   regionNameBySlug: Map<string, string>;
   activeRegionSlug: string | null;
   onRegionClick: (slug: string) => void;
@@ -219,6 +237,9 @@ export default function ArmeniaMap({
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
 }) {
+  const regionsGeo = useGeoJson("/geo/armenia-regions.geojson") ?? EMPTY_GEOJSON;
+  const roadsGeo = useGeoJson("/geo/armenia-roads.geojson");
+  const waterGeo = useGeoJson("/geo/armenia-water.geojson");
   const knownSlugs = useMemo(() => new Set(villages.map((v) => v.regionSlug)), [villages]);
   const renderer = useMemo(() => L.canvas({ padding: 0.5 }), []);
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
@@ -298,20 +319,24 @@ export default function ArmeniaMap({
       <ZoomTracker onZoom={setZoom} />
       <AttributionPrefixFix />
       <InvalidateSizeOnChange dep={isFullscreen} />
-      <GeoJSON
-        data={regionsGeo}
-        style={styleFor}
-        onEachFeature={(feature, layer) => {
-          const slug = featureSlug(feature);
-          if (knownSlugs.has(slug)) {
-            layer.on("click", () => onRegionClick(slug));
-            layer.on("mouseover", () => setHoveredSlug(slug));
-            layer.on("mouseout", () => setHoveredSlug(null));
-          }
-        }}
-      />
-      <GeoJSON data={waterGeo} style={waterStyle} attribution="&copy; OpenStreetMap contributors" />
-      <GeoJSON data={roadsGeo} style={roadStyle} />
+      {regionsGeo.features.length > 0 && (
+        <GeoJSON
+          data={regionsGeo}
+          style={styleFor}
+          onEachFeature={(feature, layer) => {
+            const slug = featureSlug(feature);
+            if (knownSlugs.has(slug)) {
+              layer.on("click", () => onRegionClick(slug));
+              layer.on("mouseover", () => setHoveredSlug(slug));
+              layer.on("mouseout", () => setHoveredSlug(null));
+            }
+          }}
+        />
+      )}
+      {waterGeo && (
+        <GeoJSON data={waterGeo} style={waterStyle} attribution="&copy; OpenStreetMap contributors" />
+      )}
+      {roadsGeo && <GeoJSON data={roadsGeo} style={roadStyle} />}
       <MarkerClusterGroup
         ref={clusterRef}
         chunkedLoading

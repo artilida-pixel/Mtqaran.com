@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { ADMIN_COOKIE, isValidAdminToken } from "@/lib/adminAuth";
+import { revalidateVillage } from "@/lib/seo";
 
 export async function PATCH(
   request: Request,
@@ -28,6 +29,9 @@ export async function PATCH(
   if (updated.count === 0) {
     return NextResponse.json({ error: "Не найдено" }, { status: 404 });
   }
+
+  const project = await prisma.project.findUnique({ where: { id }, select: { village: { select: { slug: true } } } });
+  if (project) revalidateVillage(project.village.slug);
 
   return NextResponse.json({ ok: true });
 }

@@ -10,6 +10,8 @@ import PillButton from "@/components/PillButton";
 import CornerArrowBadge from "@/components/CornerArrowBadge";
 import { SITE_URL } from "@/lib/seo";
 
+export const revalidate = 300;
+
 export default async function HomePage({
   params,
 }: {

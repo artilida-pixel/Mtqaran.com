@@ -11,6 +11,18 @@ import VillagePhotoGallery from "@/components/fund/VillagePhotoGallery";
 import VillagePhotoForm from "@/components/fund/VillagePhotoForm";
 import { canonicalPath, localeAlternates, truncateForMeta } from "@/lib/seo";
 
+export const revalidate = 60;
+
+// With no generateStaticParams at all, Next has no static shell to attach
+// ISR to and just SSRs this route fresh on every request regardless of the
+// `revalidate` above — an empty list is enough to opt in; dynamicParams
+// defaults to true, so a village visited for the first time is generated
+// on-demand and then served from cache like the rest, instead of ever
+// eagerly building all ~950 villages × 3 locales at deploy time.
+export async function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {

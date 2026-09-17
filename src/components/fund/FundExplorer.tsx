@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
-import type { FeatureCollection } from "geojson";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { pickLocalized } from "@/lib/localized";
@@ -17,16 +16,10 @@ const ArmeniaMap = dynamic(() => import("./ArmeniaMap"), {
 
 export default function FundExplorer({
   regions,
-  regionsGeo,
-  roadsGeo,
-  waterGeo,
   lang,
   dict,
 }: {
   regions: RegionListItem[];
-  regionsGeo: FeatureCollection;
-  roadsGeo: FeatureCollection;
-  waterGeo: FeatureCollection;
   lang: Locale;
   dict: Dictionary;
 }) {
@@ -81,9 +74,6 @@ export default function FundExplorer({
       >
         <ArmeniaMap
           villages={villages}
-          regionsGeo={regionsGeo}
-          roadsGeo={roadsGeo}
-          waterGeo={waterGeo}
           regionNameBySlug={regionNameBySlug}
           activeRegionSlug={expandedSlug}
           onRegionClick={toggleRegion}

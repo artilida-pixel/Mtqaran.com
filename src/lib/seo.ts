@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { locales, defaultLocale, type Locale } from "@/lib/i18n";
 
 export const SITE_URL = "https://mtqaran.am";
@@ -21,6 +22,17 @@ export function canonicalPath(locale: Locale, pathSuffix: string): string {
 // Meta descriptions should stay well under ~160 characters — our village
 // history text can run to several paragraphs, so this cuts it to the last
 // full word before the limit rather than slicing mid-word.
+// The village and fund-list pages use ISR (see `revalidate` exports on
+// those pages) so repeat visits are served from cache instead of hitting
+// Postgres — this busts that cache immediately after an admin moderates
+// something, instead of making them wait out the revalidation window.
+export function revalidateVillage(slug: string): void {
+  for (const locale of locales) {
+    revalidatePath(canonicalPath(locale, `/fund/${slug}`));
+    revalidatePath(canonicalPath(locale, "/fund"));
+  }
+}
+
 export function truncateForMeta(text: string, maxLength = 155): string {
   const flat = text.replace(/\s+/g, " ").trim();
   if (flat.length <= maxLength) return flat;

@@ -10,6 +10,8 @@ import MountainSkyline from "@/components/MountainSkyline";
 
 const PATH_SUFFIX = "/academy";
 
+export const revalidate = 300;
+
 export async function generateMetadata({
   params,
 }: {

@@ -8,11 +8,9 @@ import MountainMark from "./MountainMark";
 export default function Header({
   lang,
   dict,
-  theme,
 }: {
   lang: Locale;
   dict: Dictionary;
-  theme: "light" | "dark" | null;
 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-2 bg-ink text-on-ink">
@@ -39,7 +37,7 @@ export default function Header({
             </Link>
           </nav>
           <div className="flex items-center gap-3">
-            <ThemeToggle initialTheme={theme} />
+            <ThemeToggle />
             <LanguageSwitcher current={lang} />
           </div>
         </div>

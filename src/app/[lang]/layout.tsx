@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Armenian } from "next/font/google";
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
 import "../globals.css";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
@@ -65,6 +64,14 @@ export async function generateMetadata({
   };
 }
 
+// Reads the theme choice from the cookie synchronously, before first paint,
+// so the page never flashes the wrong theme. This has to run client-side —
+// reading the cookie on the server (as this layout used to) forces every
+// page under it into per-request dynamic rendering, which is why the whole
+// site was un-cacheable. When there's no cookie, this does nothing and
+// globals.css's prefers-color-scheme media query takes over.
+const THEME_INIT_SCRIPT = `try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);}catch(e){}`;
+
 export default async function LangLayout({
   children,
   params,
@@ -78,20 +85,19 @@ export default async function LangLayout({
   const dict = await getDictionary(locale);
   const dir = "ltr";
 
-  const cookieStore = await cookies();
-  const themeCookie = cookieStore.get("theme")?.value;
-  const theme = themeCookie === "dark" || themeCookie === "light" ? themeCookie : null;
-
   return (
     <html
       lang={locale}
       dir={dir}
-      data-theme={theme ?? undefined}
+      suppressHydrationWarning
       className={`${notoSans.variable} ${notoSansArmenian.variable}`}
     >
+      <head>
+        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <div className="flex min-h-screen flex-col">
-          <Header lang={locale} dict={dict} theme={theme} />
+          <Header lang={locale} dict={dict} />
           <main className="flex-1">{children}</main>
           <Footer lang={locale} dict={dict} />
         </div>

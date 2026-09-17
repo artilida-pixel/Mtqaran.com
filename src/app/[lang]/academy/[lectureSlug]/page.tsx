@@ -8,6 +8,15 @@ import { getLectureBySlug } from "@/lib/data";
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
 import { canonicalPath, localeAlternates, truncateForMeta } from "@/lib/seo";
 
+export const revalidate = 3600;
+
+// See the equivalent comment in fund/[villageSlug]/page.tsx — without this,
+// `revalidate` above has no static shell to apply to and the route is just
+// SSR'd on every request.
+export async function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {

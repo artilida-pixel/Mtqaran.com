@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { ADMIN_COOKIE, isValidAdminToken } from "@/lib/adminAuth";
+import { revalidateVillage } from "@/lib/seo";
 
 export async function POST(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const cookieStore = await cookies();
@@ -19,6 +20,9 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
   if (updated.count === 0) {
     return NextResponse.json({ error: "Не найдено" }, { status: 404 });
   }
+
+  const photo = await prisma.villagePhoto.findUnique({ where: { id }, select: { village: { select: { slug: true } } } });
+  if (photo) revalidateVillage(photo.village.slug);
 
   return NextResponse.json({ ok: true });
 }

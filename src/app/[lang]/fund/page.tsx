@@ -7,10 +7,11 @@ import FundExplorer from "@/components/fund/FundExplorer";
 import ProjectCard from "@/components/fund/ProjectCard";
 import { pickLocalized } from "@/lib/localized";
 import type { RegionListItem } from "@/components/fund/types";
-import { getArmeniaRegionsGeoJson, getArmeniaRoadsGeoJson, getArmeniaWaterGeoJson } from "@/lib/armeniaGeo";
 import { canonicalPath, localeAlternates } from "@/lib/seo";
 
 const PATH_SUFFIX = "/fund";
+
+export const revalidate = 120;
 
 export async function generateMetadata({
   params,
@@ -72,10 +73,6 @@ export default async function FundPage({
     take: 6,
   });
 
-  const regionsGeo = getArmeniaRegionsGeoJson();
-  const roadsGeo = getArmeniaRoadsGeoJson();
-  const waterGeo = getArmeniaWaterGeoJson();
-
   return (
     <div>
       <section className="hero-ink relative overflow-hidden">
@@ -87,14 +84,7 @@ export default async function FundPage({
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <FundExplorer
-          regions={regions}
-          regionsGeo={regionsGeo}
-          roadsGeo={roadsGeo}
-          waterGeo={waterGeo}
-          lang={locale}
-          dict={dict}
-        />
+        <FundExplorer regions={regions} lang={locale} dict={dict} />
       </section>
 
       {activeProjects.length > 0 && (

@@ -118,3 +118,29 @@ body {
   border-radius: 9999px;
   background: linear-gradient(90deg, var(--brand-apricot), var(--brand-apricot-dark));
 }
+
+/* ThemeToggle renders both icons unconditionally and lets CSS pick which one
+   shows, instead of a JS theme value — the theme is only knowable client-side
+   (see the blocking script in [lang]/layout.tsx), so branching the rendered
+   icon on that in React would mismatch the server-rendered HTML on every
+   load. Mirrors the same light/dark precedence as the color tokens above. */
+.theme-icon-dark {
+  display: none;
+}
+.theme-icon-light {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-dark {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .theme-icon-light {
+    display: none;
+  }
+}
+:root[data-theme="dark"] .theme-icon-dark {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-light {
+  display: none;
+}
